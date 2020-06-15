@@ -1,0 +1,69 @@
+body {
+	background-color: #F8F9FA;
+}
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0px 105px;
+}
+
+nav .button {
+	height: 30px;
+
+}
+
+.button {
+	color: white;
+	background-color: #007CFF;
+	border-radius: 8px;
+	padding: 5px;	
+	text-align: center;
+	border: 0;
+
+}
+
+form {
+	background-image: url('oceanbackground.jpg');
+
+	height: 500px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+
+
+form p {
+	font-size: 40px;
+	font-weight: bolder;
+	color: white;
+	text-align: center;
+}
+
+form input {
+	height: 2em;
+}
+
+form input.email {
+	width: 350px;
+}
+
+form input.button {
+	width: 75px;
+}
+
+.salepoints {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 40px;
+
+}
+
+.salepoint {
+	text-align: center;
+}
+
