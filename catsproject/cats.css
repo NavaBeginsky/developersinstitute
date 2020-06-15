@@ -1,4 +1,8 @@
-h1 {
+body {
+	background-color: #DFE7FF;
+}
+
+h1, .compare {
 	text-align: center;
 }
 
