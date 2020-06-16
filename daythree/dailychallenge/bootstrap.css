@@ -1,0 +1,33 @@
+
+body {
+	margin: 10px;
+}
+
+
+.sidebar {
+	background-color: rgba(165, 165, 165, 0.9);
+	border: rgb(165, 165, 165) solid 1px;
+
+
+}
+
+h2 {
+	text-align: center;
+	padding-top: 15px;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0px;
+	text-align: center;
+	color: white;
+	
+
+}
+
+
+
+form {
+	text-align: center;
+}
+

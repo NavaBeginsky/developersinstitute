@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="bootstrap.css">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 <body>
 	<!-- . Create a stucture with a container, 2 rows and 3 columns in each row. What should be the width of each column so it would take the whole width of the row ? -->
 	<div class="container">
@@ -56,6 +57,40 @@
 			<div class="col-lg-5 offset-lg-1 column"></div>
 		
 	</div>
+
+	<!-- Create a stucture with a container, 1 row and 3 columns in the row. Make it responsive so depending of the width of the screen, the columsn will display differently. Write a code for 4 different type of screens. -->
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-5 col-sm-6 column"></div>
+			<div class="col-lg-4 col-md-5 col-sm-6 column"></div>
+			<div class="col-lg-4 col-md-5 col-sm-6 column"></div>
+		</div>
+	</div>
+	<br>
+
+	<!-- 1. Create a few alerts. Look on Bootstrap documentation to make 3 different alerts : blue, green red -->
+	<div class="alert alert-primary">This is my blue alert</div>
+	<div class="alert alert-success">This is my green alert</div>
+	<div class="alert alert-danger">This is my red alert</div>
+
+	<!-- 2. Create a few buttons. Look on Bootstrap documentation to make 3 different buttons : blue, green red -->
+	<a href="#" class="btn btn-primary">This is my blue button</a>
+	<a href="#" class="btn btn-success">This is my green button</a>
+	<a href="#" class="btn btn-danger">This is my red button</a>
+
+	<!-- Create a form that has 4 inputs : name, surname, phone number and email. The button of the form should be an icon of your choice -->
+	<form>	
+		<div class="form-group">
+			<input type="text" class="form-control" name="firstName" placeholder="First Name">
+			<input type="text" class="form-control" name="lastName" placeholder="Last Name">
+			<input type="tel" class="form-control" name="phone" placeholder="Phone Number">
+			<input type="email" class="form-control" name="email" placeholder="Email">
+			<button type="submit" class="form-control">
+   				<span class="glyphicon glyphicon-ok">Submit</span>
+			</button>
+		</div>
+	</form>
 
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
