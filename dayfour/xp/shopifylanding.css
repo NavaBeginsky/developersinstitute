@@ -1,0 +1,79 @@
+body {
+	background-image: url(https://previews.123rf.com/images/nexusplexus/nexusplexus1207/nexusplexus120700376/14521883-image-of-a-light-blue-world-map.jpg);
+}
+
+.header {
+	padding-top: 10px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
+
+.stats-container {
+	margin-top: 2em;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.stats {
+	text-align: center;
+	margin: auto 3em;
+}
+
+.stats p:first-of-type {
+	color: #606DC5;
+	font-size: 3em;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.stats p:last-of-type {
+	margin-top: 0px;
+	font-weight: bold;
+	color: grey;
+}
+
+.cards-container {
+	margin-top: 60px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	height: 400px;
+	align-items: center;
+}
+
+.card {
+	width: 300px;
+	
+}
+
+img {
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
+/*	position: absolute;*/
+
+}
+
+.footerpink {
+	background-color: #FB8B8A;
+}
+
+.footerblue {
+	background-color: #5C6AC4;
+}
+
+.footergreen {
+	background-color: #47C1BF;
+}
+
+.card-footer p{
+	text-align: center;
+	margin: 2px auto;
+
+}
+
+.carddown {
+	align-self: flex-end;
+}
