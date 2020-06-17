@@ -52,8 +52,15 @@ img {
 	width: 60px;
 	height: 60px;
 	border-radius: 30px;
-/*	position: absolute;*/
+	z-index: 1;
+	align-self: center;
 
+
+}
+
+.card-footer {
+
+	margin-top: -25px;
 }
 
 .footerpink {
@@ -69,11 +76,15 @@ img {
 }
 
 .card-footer p{
+
 	text-align: center;
 	margin: 2px auto;
 
 }
 
+.card-footer p:first-of-type {
+	padding-top: 10px;
+}
 .carddown {
 	align-self: flex-end;
 }
