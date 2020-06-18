@@ -1,0 +1,68 @@
+
+
+
+nav ul a {
+	color: white;
+	margin: auto 5px;
+}
+
+
+.notification {
+	margin-left: 0px;
+	border-radius: 10px;
+	
+}
+
+.jumbotron > * {
+	margin-left: 50px; 
+}
+
+.jumbotron p {
+	font-size: 1.3em;
+}
+
+.container {
+	margin:	auto;
+}
+
+.container h2 {
+	font-weight: lighter;
+}
+
+.container p {
+	font-size: 0.75em;
+}
+
+.container h2:last-of-type {
+	display: inline-block;
+}
+
+.newbadge {
+	margin-left: 5px;
+	background-color: #5BC0DE;
+	color: white;
+}
+
+@media only screen and (max-width: 600px) {
+	form input {
+		margin-top: 5px;
+	}
+
+	.clm {
+		margin-top: 20px;
+	}
+}
+
+.active {
+	background-color: black;
+}
+
+.navbar {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+form {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
