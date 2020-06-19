@@ -12,7 +12,7 @@ nav a, nav ul li {
 	color: white;
 }
 
-h2 {
+.top h2 {
 	padding-top: 100px;
 	color: white;
 	text-align: center;
@@ -29,4 +29,39 @@ h2 {
 
 .btn-primary {
 	margin-right: 5px;
+}
+
+.centercontainer {
+	display: flex;	
+	justify-content: center;	
+}
+
+.buttons {
+	padding-top: 2em;
+	padding-bottom: 150px;
+}
+
+.moreinfo {
+	margin-top: 40px;
+	font-size: .85em;
+}
+
+.moreinfo h3, .moreinfo a {
+	color: #0069D9;
+}
+
+.moreinfo p {
+	margin: 1.25em auto;
+}
+
+.arrow {
+  border: solid #0069D9;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
 }
