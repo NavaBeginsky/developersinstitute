@@ -12,6 +12,7 @@ nav a, nav ul li {
 	color: white;
 }
 
+
 .top h2 {
 	padding-top: 100px;
 	color: white;
@@ -44,6 +45,18 @@ nav a, nav ul li {
 .moreinfo {
 	margin-top: 40px;
 	font-size: .85em;
+	margin-bottom: 40px;
+}
+
+.moreinfo .fas, .moreinfo .far {
+	padding-bottom: 30px; 
+	font-size: 4em;
+	color: #0069D9;
+}
+
+.phone {
+	font-size: 4em;
+	color: #0069D9;
 }
 
 .moreinfo h3, .moreinfo a {
@@ -64,4 +77,10 @@ nav a, nav ul li {
 .right {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
+}
+
+@media only screen and (max-width: 900px) {
+	.clm {
+		padding-top: 40px;
+	}
 }
