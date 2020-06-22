@@ -1,4 +1,8 @@
-let year1 = "1993"
+let birth1;
+let birth2;
+
+let ageDiff = birth2 - birth1;
+
 
 
 //exercise 2
