@@ -1,20 +1,23 @@
-// let birth1; //older
-// let birth2;//younger
 
-function getFormData() {
+
+function computeYear() {
 	let birth1 = document.getElementById('date1').value;
 	let birth2 = document.getElementById('date2').value;
-	let ageDiff = birth2 - birth1;
-	console.log(ageDiff);
-	document.getElementById('results').innerHTML = "birth2 + ageDiff";
+	let ageDiff = Math.abs(birth1 - birth2);
+	let doubleYear;
+
+	if (birth1 > birth2) {
+		doubleYear = Number(birth1) + Number(ageDiff);
+		
+	} else {
+		doubleYear = Number(birth2) + Number(ageDiff);
+	}
+
+	
+	document.getElementById("results").innerHTML = doubleYear;
 	
 }
 
-// function getHalfAge(birth1, birth2) {
-// 	let ageDiff = birth2 - birth1;
-// 	document.getElementById('results').innerHTML = birth2 + ageDiff;
-// 	return birth2 + ageDiff;
-// }
 
 
 

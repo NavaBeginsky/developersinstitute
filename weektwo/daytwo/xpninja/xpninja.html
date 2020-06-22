@@ -4,12 +4,13 @@
 	<title>Conditionals XP</title>
 </head>
 <body>
+	<h1>Calculate when you will be exactly half your friends age!</h1>
 	<form>
 		<label for="date1">What is Your Birth Year?</label>
-		<input type="number" name="date1" id="date1" placeholder="xxxx">
+		<input type="number" name="date1" id="date1" placeholder="xxxx"><br><br>
 		<label for="date2">What is Your Friend's Birth Year?</label>
 		<input type="number" name="date2" id="date2" placeholder="xxxx">	
-		<input type="submit" onclick="getFormData()">		
+		<input type="submit" onclick="computeYear(); return false;">		
 	</form>
 	<p id="results"></p>
 
