@@ -17,6 +17,7 @@ for(let i = 0; i < favColors.length; i++){
 
 //exercise 2
 let names = ["Jack", "Philip", "Sarah", "Amanda", "Bernard", "Kyle"];
+names.sort();
 let societyName = "";
 for(name of names){
 	societyName = societyName + name.charAt(0);
