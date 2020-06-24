@@ -17,15 +17,11 @@ let average = {
 };
 
 
-function calcAverage(grade, coefficient, numOfGrades=1){
-		return grade * coefficient / numOfGrades;
-	}
-
-
 function getCourseInfo(){
 	let coursecount = 0;
 	let course = {};
 	let coursename;
+	let gradeXCoefficient = [];
 	let name = prompt('What is your name?');
 
 	do {
@@ -45,19 +41,22 @@ function getCourseInfo(){
 		}
 		while(!course.coefficient);
 
-		if(!average[course.courseName]){// if the course name is not already added to average
-			average[coursename] = course; // add our local object to the global average object
-			coursecount += 1; //increment course count
-		} else { //if the course is already in the average variable, we just need to adjust the grade
-			average.courseName.grade = course.grade ;
-		}
+		average[coursename] = course; // add our local object to the global average object
+		coursecount += 1; //increment course count
+	
+		gradeXCoefficient.push(course.grade * course.coefficient);
 
 	} while (prompt('Would you like to add another course?') == 'yes');
 
-	alert(name + ', your semester average is' + calcAverage(course.grade, course.coefficient, average.grade.length));
+	let average = gradeXCoefficient.reduce() / coursecount;
+	console.log(average);
+	alert(name + ', your semester average is' );
 
+}
+
+function add(total, current){
+	return total + current
 }
 
 
 getCourseInfo();
-console.log(average);
