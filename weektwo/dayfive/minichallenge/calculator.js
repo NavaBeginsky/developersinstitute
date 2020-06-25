@@ -2,7 +2,7 @@ let calculatorNumber = [];
 let operator = [];
 let onScreen = [];
 
-function my_f(input){
+function calculatorInput(input){
     if(input == '='){
         onScreen.length = 0;
         calculatorNumber.push('&');
@@ -14,8 +14,10 @@ function my_f(input){
         operator.push(input);
         calculatorNumber.push('&');
         document.getElementById('total').innerHTML = input;
-    } else {
-    
+    }  else {
+        if(calculatorNumber.length == 1 && calculatorNumber[0] == total && operator.length == 0){
+            reset();
+        }
         calculatorNumber.push(input);
         onScreen.push(input);
         document.getElementById('total').innerHTML = onScreen.join('');
@@ -23,10 +25,12 @@ function my_f(input){
 
 }
 
+let total;
+
 function calculate(calculatorInput, operator){
     let endOfNumber = calculatorInput.indexOf('&'); //get index of where number ends
     let number = Number(calculatorInput.slice(0, endOfNumber).join('')); //store first number
-    let total = number; //set total equal to the first number
+    total = number; //set total equal to the first number
     let currentNumber;
     let operatorUse;
 
