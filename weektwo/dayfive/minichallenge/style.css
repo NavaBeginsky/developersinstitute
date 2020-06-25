@@ -1,0 +1,28 @@
+.calculator {
+    background-color: aqua;
+    display: inline-block;
+    padding: 5px;
+}
+#total {
+    margin-top: 5px;
+    background-color: white;
+    height: 50px;
+    border: 2px solid grey;
+    font-size: 2em;
+    text-align: center;
+    padding-top: 20px;
+}
+button {
+    width:70px;
+    height:70px;
+    background-color: cadetblue;
+    /* font-weight: bolder; */
+    font-size: 2em;
+  }
+
+.reset {
+    margin-top: 1%;
+    width: 292px;
+    background-color: darkblue;
+    color: white;
+}

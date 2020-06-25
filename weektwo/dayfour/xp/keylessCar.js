@@ -52,12 +52,16 @@ let prices = {
     "blueberry":10
 } 
 
+function adjustStock(item){
+	stock[item] -= 1;
+}
+
 function myBill(shoppingList){
 	let total = 0;
 	for(let item of shoppingList){
 		if(stock[item] > 0){
 			total += prices[item];
-			stock[item] -= 1;
+			adjustStock(item);
 		}
 	}
 	return total;
