@@ -23,15 +23,20 @@ for(let index in allBooks){
         let text;
         let image;
         if(i == 0){
-            text = document.createTextNode(allBooks[index].title);
-            if(allBooks[index].alreadyRead){
-                text.style.color = red;
+            text = document.createElement('P');
+            text.innerHTML = allBooks[index].title;
+            if(allBooks[index].alreadyRead == true){
+
+                text.style.color = 'red';
             }
             column.appendChild(text);
+            
         } else if (i == 1){
-            text = document.createTextNode('Written by:' + allBooks[index].author);
-            if(allBooks[index].alreadyRead){
-                text.style.color = red;
+            text = document.createElement('P');
+            text.innerHTML = 'Written by:' + allBooks[index].author;
+            
+            if(allBooks[index].alreadyRead == true){
+                text.style.color = 'red';
             }
             column.appendChild(text);
         } else {
@@ -44,6 +49,7 @@ for(let index in allBooks){
         row.appendChild(column);
         table.appendChild(row);
     }
+   
     
 }
 document.querySelector('body').appendChild(table);
