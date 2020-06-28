@@ -52,6 +52,6 @@ for(let index in allBooks){
    
     
 }
-document.querySelector('body').appendChild(table);
+document.body.appendChild(table);
 
 
