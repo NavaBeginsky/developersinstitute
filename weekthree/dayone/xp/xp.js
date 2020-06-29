@@ -45,4 +45,4 @@ for(list of lists){
 }
 lists[0].classList.add('university', 'attendance');
 
-//exercise 3
+//exercise 3 - done online
