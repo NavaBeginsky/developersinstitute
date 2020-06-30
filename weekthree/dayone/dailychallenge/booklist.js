@@ -17,8 +17,8 @@ let allBooks = [
 let table = document.createElement('table');
 for(let index in allBooks){
     let row = document.createElement('tr');
-    let i;
-    for(i=0; i<3; i++){
+    
+    for(let i=0; i<3; i++){
         let column = document.createElement('td');
         let text;
         let image;
