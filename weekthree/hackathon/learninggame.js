@@ -2,6 +2,10 @@ let imageSection = document.getElementById('imageSection');
 let numberOfImages;
 let numbersOnPage;
 let resetNumber;
+let instructionSection = document.getElementById('instructions');
+let incorrectBoxes = document.querySelectorAll('.incorrect .checkbox');
+let correctBoxes = document.querySelectorAll('.correct .checkbox');
+let numberSection = document.getElementById('numberSection');
 
 function chooseRandomImage(){
     let images = [
@@ -46,11 +50,6 @@ function displayImages(){
     return image;
 }
 
-function displayInstructions(image){
-    let instructionSection = document.getElementById('instructions');
-    instructionSection.innerHTML = `How many ${image['name']} do you see?`
-}
-
 function getNumberChosen(numberLocation){
     let numChosen = numberLocation.getAttribute('id');
     return turnNumberIdToNum(numChosen); 
@@ -70,13 +69,47 @@ function checkIfCorrectNumberChosen(){
     if(numChosen == numberOfImages){
         event.target.style.color = 'green';
         imageSection.innerHTML = '';
+        markCorrect();
         playGame();
 
     } else {
         event.target.style.color = 'red';
+        markIncorrect();
     }
     resetNumber = event.target;
 
+}
+
+function markCorrect(){
+    let numOfBoxes = correctBoxes.length;
+    for(let i=0; i < numOfBoxes; i++){
+        if(correctBoxes[i].classList.contains('green')){
+            continue;
+        } else if (i == numOfBoxes-1){
+            correctBoxes[i].classList.add('green');
+            youWin();
+            return;
+        } else {
+            correctBoxes[i].classList.add('green');
+            break;
+        }
+    }
+}
+
+function markIncorrect(){
+    let numOfBoxes = incorrectBoxes.length;
+    for(let i=0; i < numOfBoxes; i++){
+        if(incorrectBoxes[i].classList.contains('red')){
+            continue;
+        } else if (i == numOfBoxes-1){
+            incorrectBoxes[i].classList.add('red');
+            gameOver();
+            return;
+        } else {
+            incorrectBoxes[i].classList.add('red');
+            break;
+        }
+    }
 }
 
 function trackNumberClickandValidate(){
@@ -88,10 +121,40 @@ function trackNumberClickandValidate(){
 
 function playGame(){
     let image = displayImages();
-    displayInstructions(image);
+    instructionSection.innerHTML = `How many ${image['name']} do you see?`;
     trackNumberClickandValidate();
 }
 
 playGame();
 
+function gameOver(){
+    instructionSection.innerHTML = "You lose! Want to play again?";
+    restartButton();
+}
 
+function youWin(){
+    confetti.start(4000);
+    instructionSection.innerHTML = "You win! Want to play again?";
+    restartButton();
+}
+
+function resetGame(){
+    imageSection.innerHTML = '';
+    for(let box of incorrectBoxes){
+        box.classList.remove('red');
+    }
+    for(let box of correctBoxes){
+        box.classList.remove('green');
+    }
+    numberSection.style.display = 'block';
+    playGame();
+}
+
+function restartButton(){
+    let restartButton = document.createElement('button');
+    imageSection.innerHTML = '';
+    restartButton.innerText = 'Play Again!';
+    imageSection.appendChild(restartButton);
+    restartButton.setAttribute('onclick', 'resetGame()'); 
+    numberSection.style.display = 'none';
+}
