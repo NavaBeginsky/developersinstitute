@@ -67,10 +67,9 @@ function checkIfCorrectNumberChosen(){
         resetNumber.style.color = 'black';
     }
     if(numChosen == numberOfImages){
-        event.target.style.color = 'green';
         imageSection.innerHTML = '';
-        markCorrect();
-        playGame();
+        result = markCorrect();
+        if (result != "stop") {playGame()};
 
     } else {
         event.target.style.color = 'red';
@@ -88,7 +87,7 @@ function markCorrect(){
         } else if (i == numOfBoxes-1){
             correctBoxes[i].classList.add('green');
             youWin();
-            return;
+            return "stop";
         } else {
             correctBoxes[i].classList.add('green');
             break;
