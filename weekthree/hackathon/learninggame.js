@@ -6,28 +6,34 @@ let instructionSection = document.getElementById('instructions');
 let incorrectBoxes = document.querySelectorAll('.incorrect .checkbox');
 let correctBoxes = document.querySelectorAll('.correct .checkbox');
 let numberSection = document.getElementById('numberSection');
+let audioSection = document.getElementById('myAudio');
 
 function chooseRandomImage(){
     let images = [
         {
             'name': 'apples',
-            'url': "images/apple.png"
+            'url': "images/apple.png",
+            'sound': "recordings/apple.mp3"
         }, 
         {
             'name': 'cats',
-            'url': 'images/cat.png'
+            'url': 'images/cat.png',
+            'sound': 'recordings/cats.mp3'
         }, 
         {
             'name': 'cotton candies',
-            'url': 'images/cottoncandy.png'
+            'url': 'images/cottoncandy.png',
+            'sound': 'recordings/cottoncandy.mp3'
         }, 
         {
             'name': 'pictures of Olaf',
-            'url': 'images/olaf.png'
+            'url': 'images/olaf.png',
+            'sound': 'recordings/olaf.mp3'
         },
         {
             'name': 'tractors',
-            'url': 'images/tractor.png'
+            'url': 'images/tractor.png',
+            'sound': 'recordings/truck.mp3'
         }
     ]
 
@@ -121,10 +127,9 @@ function trackNumberClickandValidate(){
 function playGame(){
     let image = displayImages();
     instructionSection.innerHTML = `How many ${image['name']} do you see?`;
+    playAudio(image);
     trackNumberClickandValidate();
 }
-
-playGame();
 
 function gameOver(){
     instructionSection.innerHTML = "You lose! Want to play again?";
@@ -156,4 +161,12 @@ function restartButton(){
     imageSection.appendChild(restartButton);
     restartButton.setAttribute('onclick', 'resetGame()'); 
     numberSection.style.display = 'none';
+}
+
+function playAudio(imageChosen){
+    let audio = document.getElementById('audio');
+    audio.setAttribute('src', imageChosen['sound']);
+    console.log(audio);
+    audioSection.play();
+
 }

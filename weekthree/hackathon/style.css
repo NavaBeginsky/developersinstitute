@@ -91,3 +91,11 @@ button {
     background-color: #AFF2CF;
 }
 
+@media screen and (max-width: 800px){
+    header {
+        display: block;
+    }
+    .trackProgress {
+        display: block;
+    }
+}
