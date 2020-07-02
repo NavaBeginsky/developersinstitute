@@ -127,9 +127,7 @@ function turnNumberIdToNum(numString){
 }
 
 function checkIfCorrectNumberChosen(){
-    console.log('hereIam');
     let numChosen = getNumberChosen(event.target);
-    console.log('here');
     if(typeof resetNumber == 'object'){
         resetNumber.style.color = 'black';
     }
@@ -141,6 +139,7 @@ function checkIfCorrectNumberChosen(){
     } else {
         event.target.style.color = 'red';
         event.target.classList.add('shakeNumber');
+        additionalAudios('tryAgain');
         event.target.addEventListener("animationend", () => {
             event.target.classList.remove("shakeNumber");
         });
@@ -189,13 +188,16 @@ function trackNumberClickandValidate(){
     }
 }
 
-function playGame(){
+async function playGame(){
     let playButton = document.getElementById('playTheGame');
     if(playButton != null){
+        additionalAudios('letslearn');
+        await sleep(1750);
         playButton.remove();
     }    
     if(currentLevel === 3){
         displayImagesLevelThree();
+        additionalAudios('math');
         instructionSection.innerHTML = `It's time to do some math!`;
         trackNumberClickandValidate();
     }
@@ -212,12 +214,16 @@ function gameOver(){
     restartButton();
 }
 
-function youWin(){
+async function youWin(){
     confetti.start(3000);
     if(currentLevel < 3){
+        additionalAudios('levelup');
+        instructionSection.innerHTML='';
+        await sleep(1700);
         levelUp();
     } else{
         resetLevelThreeImages();
+        additionalAudios('youDidIt');
         instructionSection.innerHTML = "You win! Want to play again?";
         restartButton();
     }
@@ -262,4 +268,12 @@ function playAudio(imageChosen){
     let audioSection = document.getElementById(imageChosen['sound']);
     audioSection.play();
 
+}
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+function additionalAudios(id){
+    let audioSection = document.getElementById(id);
+    audioSection.play();
 }
