@@ -23,3 +23,9 @@ function calculateTip(){
 tipBlock.style.display = "none";
 let submitButton = document.getElementById('calculate');
 submitButton.addEventListener('click', calculateTip);
+
+
+//exercise 2
+let newForm = document.createElement('form');
+let emailInput = document.createElement('input');
+emailInput.setAttribute('type',)
