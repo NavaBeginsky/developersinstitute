@@ -84,7 +84,7 @@ function displayImagesLevelThree(){
         numberOfImageArray[1] = numberOfImages2;
     } else {
         numberOfImageArray[0] = numberOfImages2;
-        numberOfImageArray[1] = numberOfImages1;
+        numberOfImageArray[1] = numberOfImages;
     }
     resetLevelThreeImages();
     let i = 0;
