@@ -64,8 +64,8 @@ h1 {
 }
 
 img {
-    width: 140px;
-    padding: 25px;
+    width: 120px;
+    padding: 0px 25px;
 }
 
 #numberSection{
@@ -74,7 +74,7 @@ img {
 
 .number {
     font-size: 120px;
-    padding: 50px;
+    padding: 0px 50px;
     transition: all 0.75s;
     display: inline-block;
 }
@@ -94,6 +94,34 @@ button {
 #numberSection .levelup{
     display: none;
 }
+
+#imageSplit {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    justify-items: center;
+}
+
+.shakeNumber {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  }
+  
+  @keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+  
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
 
 @media screen and (max-width: 800px){
     header {
@@ -117,6 +145,10 @@ button {
     img {
         width: 80px;
         padding: 10px;
+    }
+    
+    #instructions{
+        padding: auto 20px;
     }
    
 }
