@@ -7,6 +7,8 @@ let incorrectBoxes = document.querySelectorAll('.incorrect .checkbox');
 let correctBoxes = document.querySelectorAll('.correct .checkbox');
 let numberSection = document.getElementById('numberSection');
 let audioSection = document.getElementById('myAudio');
+let currentLevel = 1;
+let levelUpNumbers = document.querySelector('#numberSection .levelup');
 
 function chooseRandomImage(){
     let images = [
@@ -44,7 +46,11 @@ function chooseRandomImage(){
 
 function displayImages(){
     let image = chooseRandomImage();
-    numberOfImages = Math.ceil(Math.random() * 5);
+    if(currentLevel === 1){
+        numberOfImages = Math.ceil(Math.random() * 5);
+    } else {
+        numberOfImages = Math.ceil(Math.random() * 10);
+    }
     let imageSection = document.getElementById('imageSection');
     let i = 0;
     while(i < numberOfImages){
@@ -64,7 +70,12 @@ function getNumberChosen(numberLocation){
 function turnNumberIdToNum(numString){
     let numArray = numString.split('');
     let lastItem = numArray.length - 1;
-    return Number(numArray[lastItem]);
+    if (Number(numArray[lastItem]) === 0){
+        return 10;
+    } else {
+        return Number(numArray[lastItem]);
+
+    }
 }
 
 function checkIfCorrectNumberChosen(){
@@ -125,6 +136,10 @@ function trackNumberClickandValidate(){
 }
 
 function playGame(){
+    let playButton = document.getElementById('playTheGame');
+    if(playButton != null){
+        playButton.remove();
+    }    
     let image = displayImages();
     instructionSection.innerHTML = `How many ${image['name']} do you see?`;
     playAudio(image);
@@ -137,13 +152,28 @@ function gameOver(){
 }
 
 function youWin(){
-    confetti.start(4000);
-    instructionSection.innerHTML = "You win! Want to play again?";
-    restartButton();
+    confetti.start(3000);
+    if(currentLevel === 1){
+        levelUp();
+    } else{
+        instructionSection.innerHTML = "You win! Want to play again?";
+        restartButton();
+    }
+}
+
+function levelUp(){
+    for(let box of correctBoxes){
+        box.classList.remove('green');
+    }
+    currentLevel++
+    levelUpNumbers.style.display = 'inline-block';
+    playGame();
 }
 
 function resetGame(){
     imageSection.innerHTML = '';
+    currentLevel = 1;
+    levelUpNumbers.style.display = 'none';
     for(let box of incorrectBoxes){
         box.classList.remove('red');
     }
@@ -151,6 +181,9 @@ function resetGame(){
         box.classList.remove('green');
     }
     numberSection.style.display = 'block';
+    if(typeof resetNumber == 'object'){
+        resetNumber.style.color = 'black';
+    }
     playGame();
 }
 
@@ -164,8 +197,8 @@ function restartButton(){
 }
 
 function playAudio(imageChosen){
-    let audio = document.getElementById('audio');
-    audio.setAttribute('src', imageChosen['sound']);
+    // let audio = document.getElementById('audio');
+    // audio.setAttribute('src', imageChosen['sound']);
     console.log(audio);
     audioSection.play();
 
