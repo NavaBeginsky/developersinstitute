@@ -7,7 +7,6 @@ let instructionSection = document.getElementById('instructions');
 let incorrectBoxes = document.querySelectorAll('.incorrect .checkbox');
 let correctBoxes = document.querySelectorAll('.correct .checkbox');
 let numberSection = document.getElementById('numberSection');
-let audioSection = document.getElementById('myAudio');
 let currentLevel = 1;
 let levelUpNumbers = document.querySelector('#numberSection .levelup');
 let total;
@@ -20,27 +19,27 @@ function chooseRandomImage(){
         {
             'name': 'apples',
             'url': "images/apple.png",
-            'sound': "recordings/apple.mp3"
+            'sound': "apples"
         }, 
         {
             'name': 'cats',
             'url': 'images/cat.png',
-            'sound': 'recordings/cats.mp3'
+            'sound': 'cats'
         }, 
         {
             'name': 'cotton candies',
             'url': 'images/cottoncandy.png',
-            'sound': 'recordings/cottoncandy.mp3'
+            'sound': 'cottoncandy'
         }, 
         {
             'name': 'pictures of Olaf',
             'url': 'images/olaf.png',
-            'sound': 'recordings/olaf.mp3'
+            'sound': 'olaf'
         },
         {
             'name': 'tractors',
             'url': 'images/tractor.png',
-            'sound': 'recordings/truck.mp3'
+            'sound': 'tractors'
         }
     ]
 
@@ -260,9 +259,7 @@ function restartButton(){
 }
 
 function playAudio(imageChosen){
-    // let audio = document.getElementById('audio');
-    // audio.setAttribute('src', imageChosen['sound']);
-    console.log(audio);
+    let audioSection = document.getElementById(imageChosen['sound']);
     audioSection.play();
 
 }
