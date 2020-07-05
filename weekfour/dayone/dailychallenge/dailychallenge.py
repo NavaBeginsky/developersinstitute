@@ -1,7 +1,7 @@
 user_string = input('Give me a string')
 print(f'The first character is {user_string[0]}')
-last_char_user_string = len(user_string) - 1
-print(f'The last character is {user_string[last_char_user_string]}')
+last_pos_user_string = len(user_string) - 1
+print(f'The last character is {user_string[last_pos_user_string]}')
 build_string = ' '
 for i in user_string:
     build_string = build_string + i
