@@ -9,7 +9,7 @@ print(list1)
 aTuple = (10, 20, 30, 40)
 one, two, three, four = aTuple
 
-
+#multiplication table
 n = int(input('give me a number'))
 multiplication_table = []
 for num in range(1,11):
