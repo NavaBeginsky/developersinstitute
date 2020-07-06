@@ -6,7 +6,7 @@ age = int((current_date - birthday_convert_to_date) / 365 / timedelta (days=1))
 age_to_string = str(age)
 last_digit_of_age = int(age_to_string[-1])
 candles = 'i' * int(last_digit_of_age)
-print(f'''\t ___{candles}___ 
+cake = (f'''\t ___{candles}___ 
        | :H:a:p:p:y:  |
      __|______________|__
     |^^^^^^^^^^^^^^^^^^^^|
@@ -14,3 +14,15 @@ print(f'''\t ___{candles}___
     |                    |
     ~~~~~~~~~~~~~~~~~~~~~~
     ''')
+
+#check if leap year, print two cakes if yes
+if birthday_convert_to_date.year % 4 == 0 :
+    if birthday_convert_to_date.year % 100 == 0 :
+        if birthday_convert_to_date.year % 400 == 0 :
+            print(cake * 2)
+        else :
+            print(cake)
+    else :
+        print(cake * 2)
+else :
+    print(cake)
