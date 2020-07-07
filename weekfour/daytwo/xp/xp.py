@@ -28,7 +28,7 @@ for num in range(1, 21):
 
 #exercise 5
 more_toppings = True
-while(more_toppings):
+while more_toppings:
     current_topping = input('What Toppings would you like? If you are finished, enter "quit"')
     if current_topping == 'quit':
         more_toppings = False
@@ -56,7 +56,7 @@ get_total_ticket_cost_family()
 
 def oldEnoughToSeeMovie():
     people_allowed_to_see = []
-    while(True):
+    while True:
         name = input('What is your name? (If there are no more people, type "quit")')
         if name == 'quit':
             break
@@ -96,7 +96,7 @@ print(basket)
 #exercise 9
 def printListItems(my_list):
     i = 0
-    while(i < len(my_list)):
+    while i < len(my_list):
         print(my_list[i])
         i += 1
 
@@ -107,7 +107,7 @@ printListItems(my_list)
 #exercise 10
 def printEvenIndexItems(my_list):
     i = 0
-    while(i < len(my_list)):
+    while i < len(my_list):
         print(my_list[i])
         i += 2
 

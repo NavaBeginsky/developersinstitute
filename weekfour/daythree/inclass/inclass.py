@@ -23,3 +23,9 @@ countries = [{
         'capital': 'Bangkok', 
         'continent': 'Asia'
     }]
+
+
+names = ["jon", "tom", "jack"]
+firstLetter = [name[0].upper() for name in names]
+name_dict = dict(zip(firstLetter, names))
+print(name_dict)

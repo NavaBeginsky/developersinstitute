@@ -24,7 +24,7 @@ print(list_1)
 
 #exercise 5
 list_of_everyone = []
-while(True):
+while True:
     personal_info = input('Please enter your name, age and score, seperated by commas. If there are no more, enter "quit"')
     if personal_info == 'quit':
         break
