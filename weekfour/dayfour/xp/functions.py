@@ -26,11 +26,35 @@ def show_magicians(magicians):
     for name in magicians:
         print(name)
 
-def make_great(*magicians):
-    for name in magicians:
-        print(name)
-        # name = "The Great" + name
+def make_great(magicians):
+    ''' creates new array with all the names preceded by "the great" and returns it '''
+    magicians_made_great = ["The Great " + name for name in magicians]
+    return magicians_made_great
 
-make_great(magician_names)
-# show_magicians(magician_names)
+magician_names = make_great(magician_names)
+show_magicians(magician_names)
 
+#exercise 5
+def describe_city(city_name, country = 'Israel'):
+    print(f'{city_name} is in {country}')
+
+describe_city('london', 'England')
+describe_city("Rome", "Italy")
+describe_city('Tel Aviv')
+
+#exercise 6
+from datetime import datetime, timedelta
+
+def get_age(year, month, day):
+    current_date = datetime.today
+    birthday = day + '/' + month + '/' + year
+    birthday_convert_to_date = datetime.strptime(birthday, "%d/%m/%Y")
+    age = int((current_date - birthday_convert_to_date) / 365 / timedelta (days=1))
+    print(age)
+
+get_age('1993', '3', '12')
+
+
+
+
+    
