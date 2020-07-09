@@ -32,7 +32,6 @@ def decodeMatrix(matrix, items_per_list):
                         decoded_words += ' '
             except :
                 if char[i] is int :
-                    print('here1')
                     pass
         i += 1
             
