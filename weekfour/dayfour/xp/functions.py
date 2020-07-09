@@ -45,15 +45,19 @@ describe_city('Tel Aviv')
 #exercise 6
 from datetime import datetime, timedelta
 
-def get_age(year, month, day):
-    current_date = datetime.today
-    birthday = day + '/' + month + '/' + year
+def get_age(birthday):
+    current_date = datetime.now()
     birthday_convert_to_date = datetime.strptime(birthday, "%d/%m/%Y")
-    age = int((current_date - birthday_convert_to_date) / 365 / timedelta (days=1))
-    print(age)
+    return int((current_date - birthday_convert_to_date) / 365 / timedelta (days=1))
+    
 
-get_age('1993', '3', '12')
+def can_retire(gender, birthday):
+    age = get_age(birthday)
+    return gender == "female" and age >= 62 or gender == 'male' and age >= 67    
 
+birthday = input('What is your birthdate? (dd/mm/yyyy)')
+gender = input('what is your gender? (male or female)')
+print('You can retire') if can_retire(gender, birthday) else print('You cannot retire')
 
 
 
