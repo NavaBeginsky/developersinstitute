@@ -10,6 +10,7 @@ board_positions = [
     [(3, 3), {'taken_by': ' '}]
 ]
 
+
 def display_board():
     print(f'''
     TIC TAC TOE
@@ -23,6 +24,8 @@ def display_board():
     *       |       |      *
     ************************
     ''')
+
+
 def player_input(current_player):
     ''' get current player's list, ask them to choose a position, if the position is free add it to their list and add it to the 
      variable that will display on the board. If they choose a position that doesn't exist it will tell them and ask for position again'''
@@ -40,11 +43,14 @@ def player_input(current_player):
 
 
 def check_win(current_player):
-    players_positions = [position[0] for position in board_positions if position[1]['taken_by'] == current_player]
-    players_rows = [position[0][0] for position in board_positions if position[1]['taken_by'] == current_player]
-    players_columns = [position[0][1] for position in board_positions if position[1]['taken_by'] == current_player]
+    players_positions = [position[0]
+                         for position in board_positions if position[1]['taken_by'] == current_player]
+    players_rows = [position[0][0]
+                    for position in board_positions if position[1]['taken_by'] == current_player]
+    players_columns = [position[0][1]
+                       for position in board_positions if position[1]['taken_by'] == current_player]
     num = 1
-    while num < 4: #if they have 3 of the same number in their rows or their columns it means they win
+    while num < 4:  # if they have 3 of the same number in their rows or their columns it means they win
         if players_rows.count(num) == 3:
             print('here')
             return True
@@ -56,8 +62,9 @@ def check_win(current_player):
     if winning_combos[0][0] in players_positions and winning_combos[0][1] in players_positions and winning_combos[0][2] in players_positions or winning_combos[1][0] in players_positions and winning_combos[1][1] in players_positions and winning_combos[1][2] in players_positions:
         print('here2')
         return True
-    else :
+    else:
         return False
+
 
 def check_if_draw():
     available_positions = []
@@ -67,10 +74,10 @@ def check_if_draw():
     if available_positions == []:
         print('It\'s a draw!')
         return True
-    else :
+    else:
         return False
 
-  
+
 def play(current_player):
     current_player = current_player
     display_board()
@@ -84,5 +91,6 @@ def play(current_player):
             return
         current_player = 'o' if current_player == 'x' else 'x'
         play(current_player)
+
 
 play('x')
