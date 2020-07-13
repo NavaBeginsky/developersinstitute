@@ -16,16 +16,19 @@ class Family():
             if person['name'] == member_name:
                 return person['age'] >= 18
 
+    def __repr__(self):
+        return self.members
 
-    # def get_family(self):
-    #     print(self.members)
-    #     print(repr(self.members))
+    def get_family(self):
+        print(self.members)
+        print(repr(self.members))
 
 
 beginsky = Family('Beginsky', [{'name':'Michael','age':35,'gender':'Male','is_child':False}, {'name':'Sarah','age':32,'gender':'Female','is_child':False}])
 beginsky.born(name='Maya', gender = 'Female')
 print(beginsky.is_18('Michael'))
-# beginsky.get_family()
+beginsky.__repr__()
+
 
 class TheIncredibles(Family):
     '''**members info to be passed to super class should be a list containing dictionaries that contain
