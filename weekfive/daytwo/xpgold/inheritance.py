@@ -76,7 +76,7 @@ class BankAccount(Bank):
                 user_cc = input('That was not correct, what is your credit card number?') 
             if user_pw != self.password:
                 user_pw = input('What is your password?')
-                if user pw != self.password:
+                if user_pw != self.password:
                     print("Wrong password, the card has been eaten by the machine")
                     del self.cc_num
                 else:
