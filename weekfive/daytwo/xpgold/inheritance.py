@@ -81,6 +81,6 @@ class BankAccount(Bank):
                     del self.cc_num
                 else:
                     deposit_or_withdraw = input('Would you like to make a "deposit" or "withraw"?')
-                    self.deposit() if deposit_or_withdraw == 'deposit' else self.withdraw()
+                    # self.deposit() if deposit_or_withdraw == 'deposit' else self.withdraw()
 
 
