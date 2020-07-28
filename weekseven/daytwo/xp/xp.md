@@ -20,7 +20,7 @@ SELECT sum(math_grade) FROM student;
 SELECT * FROM items ORDER BY price ASC;
 SELECT * FROM items WHERE price > 80 ORDER BY price DESC;
 SELECT f_name, l_name FROM customers ORDER BY f_name ASC LIMIT 3;
-#####missing
+SELECT * FROM (SELECT f_name, l_name FROM customers ORDER BY f_name DESC LIMIT 2) AS foo ORDER BY f_name ASC;
 SELECT l_name FROM customers ORDER BY l_name DESC;
 
 CREATE TABLE purchases (
