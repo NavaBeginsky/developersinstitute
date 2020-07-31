@@ -21,10 +21,27 @@ INNER JOIN actor on actor.actor_id = film_actor.actor_id WHERE description ILIKE
 
 SELECT title FROM film WHERE length < 60 AND rating = 'R' AND description ILIKE '%documentary%'
 
-SELECT title FROM film INNER JOIN rental ON film.film_id = rental.inventory_id
+SELECT title FROM film 
+INNER JOIN inventory ON film.film_id = inventory.film_id 
+INNER JOIN rental ON inventory.inventory_id = rental.inventory_id
 INNER JOIN customer ON rental.customer_id = customer.customer_id
 WHERE first_name = 'Matthew' AND last_name = 'Mahan' AND rental_rate > 4.00 AND return_date BETWEEN '2005-07-28' AND '2005-08-01'
 
-SELECT title FROM film INNER JOIN rental ON film.film_id = rental.inventory_id
-INNER JOIN customer ON rental.customer_id = customer.customer_id
+
+SELECT title FROM film 
+JOIN inventory ON film.film_id = inventory.film_id 
+JOIN rental ON inventory.inventory_id = rental.inventory_id
+JOIN customer ON rental.customer_id = customer.customer_id
 WHERE first_name = 'Matthew' AND last_name = 'Mahan' AND (title ILIKE '%boat%' OR description ILIKE '%boat%')
+ORDER BY replacement_cost DESC LIMIT 1
+
+#6
+SELECT * FROM nicer_but_slower_film_list 
+WHERE category = 'Action' AND actors ILIKE '%JoeSwank%'
+
+#7
+INSERT INTO rental (rental_date, inventory_id, customer_id, staff_id) 
+VALUES (current_timestamp, 234, (SELECT customer_id FROM customer WHERE first_name = 'Nava' AND last_name = 'Gross'), 1), (current_timestamp, 654, (SELECT customer_id FROM customer WHERE first_name = 'Nava' AND last_name = 'Gross'), 1), (current_timestamp, 987, (SELECT customer_id FROM customer WHERE first_name = 'Nava' AND last_name = 'Gross'), 1)
+
+#8
+UPDATE rental SET return_date = current_timestamp WHERE customer_id = (SELECT customer_id FROM customer WHERE first_name = 'Nava' AND last_name = 'Gross') AND (inventory_id = 234 OR inventory_id = 654)
