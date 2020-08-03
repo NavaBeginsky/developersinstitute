@@ -1,0 +1,21 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            {{ page_title|default:"Personal Info" }}
+        {% endblock title %}
+    </title>
+</head>
+<body>
+    {% block content %}
+        <ul>
+            {% for k, v in person.items %}
+            <li>{{ k | capfirst}}: {{ v }}</li>
+            {% endfor %}
+        </ul>
+        
+    {% endblock content %}
+
+</body>
+</html>
