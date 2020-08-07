@@ -7,8 +7,9 @@
     </head>
     <body>
         <h1>{{ bookinfo.title }}</h1>
+        <p>Genre: {{ bookinfo.genre }}</p>
         <p>{% for author in authors %}
-                {{ author.name }}
+                Author: {{ author.name }}
             {% endfor %}    
         </p>
         
