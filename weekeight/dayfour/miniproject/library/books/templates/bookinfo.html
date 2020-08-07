@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Library</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>{{ bookinfo.title }}</h1>
+        <p>{% for author in authors %}
+                {{ author.name }}
+            {% endfor %}    
+        </p>
+        
+
+    </body>
+</html>
