@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class='container'>
+    <div class="card" style="width: 75vw;">
+        <h5 class="card-header">{{ hotel.name }}</h5>
+        <img class="card-img-top" src='{{ photos.0.image.url }}' alt="Card image cap">
+        <div class="card-body text-center">
+            <p class="card-text">{{ hotel.details }}</p>
+        </div>
+        <div class="card-body text-center">
+            <a href="#" class="card-link">Find more details here</a>
+            <a href="#" class="card-link">Another link</a>
+            <br>
+            <a href="{% url 'user_choice' 'like' %}"><i class="far fa-heart"></i></a>
+            <a href="{% url 'show_hotels' %}"><i class="fas fa-forward"></i></a>
+            <a href="{% url 'user_choice' 'reject' %}"><i class="fas fa-times"></i></a>
+        </div>
+    </div>
+</div>
+{% endblock %}
