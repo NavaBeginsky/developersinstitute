@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Country(models.Model):
@@ -21,6 +22,8 @@ class Hotels(models.Model):
     name = models.CharField(max_length=100)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     details = models.CharField(max_length=1000)
+    liked_by_user = models.ManyToManyField(User, related_name='liked')
+    rejected_by_user = models.ManyToManyField(User, related_name='rejected')
 
     def __str__(self):
         return self.name
