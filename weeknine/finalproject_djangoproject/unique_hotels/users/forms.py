@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from user_profile.models import UserProfilePic
 from django import forms
 
 class UserSignUpForm(UserCreationForm):
@@ -13,3 +14,9 @@ class UserSignUpForm(UserCreationForm):
         super(UserSignUpForm, self).__init__(*args, **kwargs)
         for fieldname in ['username', 'password1', 'password2']:
             self.fields[fieldname].help_text = None
+    
+    def save(self, commit=True):
+        new_user = super(UserSignUpForm, self).save(commit=False)
+        new_user.email = self.cleaned_data['email']
+        new_user.save()
+        return new_user

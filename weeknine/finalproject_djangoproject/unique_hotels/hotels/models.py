@@ -20,10 +20,12 @@ class Location(models.Model):
 
 class Hotels(models.Model):
     name = models.CharField(max_length=100)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE)
-    details = models.CharField(max_length=1000)
+    location = models.ForeignKey(Location, on_delete=models.SET_NULL, null=True)
+    unique_snippet = models.CharField(max_length=500)
+    details = models.CharField(max_length=2000)
     liked_by_user = models.ManyToManyField(User, related_name='liked')
     rejected_by_user = models.ManyToManyField(User, related_name='rejected')
+    booking_website = models.URLField()
 
     def __str__(self):
         return self.name
@@ -35,16 +37,21 @@ class HotelPhotos(models.Model):
     def __str__(self):
         return self.hotel.name
 
+class Coordinates(models.Model):
+    hotel = models.OneToOneField(Hotels, on_delete=models.CASCADE)
+    lat = models.DecimalField(max_digits=10, decimal_places=7)
+    lon = models.DecimalField(max_digits=10, decimal_places=7)
+
 class Categories(models.Model):
     name = models.CharField(max_length=100)
-    hotel = models.ManyToManyField(Hotels)
+    hotel = models.ManyToManyField(Hotels, blank=True)
     
     def __str__(self):
         return self.name
 
 class Amenities(models.Model):
     name = models.CharField(max_length=100)
-    hotel = models.ManyToManyField(Hotels)
+    hotel = models.ManyToManyField(Hotels, blank=True)
 
     def __str__(self):
         return self.name
