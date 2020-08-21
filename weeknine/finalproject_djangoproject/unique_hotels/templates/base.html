@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,8 @@
     <title>{% block title %}Unique Hotels{% endblock %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block css %}{% endblock %}
 </head>
 <body>
     <!-- nav bar -->
@@ -19,7 +22,7 @@
         
         {% if user.is_authenticated %}
           <a href="{% url 'profile' user.username %}">
-            <img class='navbar-nav' src='{{ user.userprofilepic.profile_pic.url }}' alt='profile picture' width=50 height=50>
+            <img class='navbar-nav user-avatar' src='{{ user.userprofilepic.profile_pic.url }}' alt='profile picture' width=60 height=60>
           </a>
           {% else %}
           <a class='navbar-nav' href="{% url 'login' %}">Login</a>
@@ -32,7 +35,7 @@
     <!-- Footer -->
     <footer class="page-footer font-small blue pt-4">
         <div class="footer-copyright text-center py-3">© 2020 Copyright:
-            <a href="#">Unique Hotels</a>
+            <a href="#">Unique Stays</a>
         </div>
     </footer>
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import *
+from .models import Hotels, HotelPhotos, Amenities, Categories, Coordinates, Location, Country
 
 # Register your models here.
 

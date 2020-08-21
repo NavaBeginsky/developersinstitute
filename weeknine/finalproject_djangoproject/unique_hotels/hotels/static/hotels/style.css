@@ -1,0 +1,24 @@
+.hotels-main .hotel-card .hotel-img{
+    max-height: 500px;
+}
+
+.choice{
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+}
+
+.skip-form{
+    display: inline-block;
+}
+
+/* 
+.like-button{
+
+}
+
+.reject-button{
+
+}
+
+.skip-button */

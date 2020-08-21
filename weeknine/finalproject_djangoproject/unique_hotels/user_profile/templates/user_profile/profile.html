@@ -1,17 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'user_profile/style.css' %}">
+{% endblock %}
 {% block content %}
 <h2>My Loved Hotels</h2>
+<div class='profile-page'>
     {% for hotel in object_list%}
-        <div class="card">
-            <h5 class="card-header">{{ hotel.name }}</h5>
-            <img class="card-img-top" src='{{ hotel.hotelphotos_set.all.first.image.url }}' alt="photos of hotel">
-            <div class="card-body text-center">
-                <p class="card-text">{{ hotel.details }}</p>
-            </div>
-            <div class="card-body text-center">
-                <a href="#" class="card-link">Find more details here</a>
-                <a href="#" class="card-link">Another link</a>
-            </div>
-        </div>
+        {% include 'partials/hotelcards.html' with current_page='profile' %}
     {% endfor %}
+</div>
 {% endblock %}

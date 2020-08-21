@@ -26,9 +26,13 @@ class Hotels(models.Model):
     liked_by_user = models.ManyToManyField(User, related_name='liked')
     rejected_by_user = models.ManyToManyField(User, related_name='rejected')
     booking_website = models.URLField()
+    approved = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        unique_together = ('name', 'location')
    
 class HotelPhotos(models.Model):
     image = models.ImageField()

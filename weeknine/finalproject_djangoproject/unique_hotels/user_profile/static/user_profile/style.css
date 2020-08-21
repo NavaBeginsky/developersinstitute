@@ -1,0 +1,17 @@
+.red {
+    color: red;
+}
+
+.profile-page .hotel-card{
+    width: 500px;
+    display: inline-block;
+    margin: 20px;
+}
+
+.hotel-img{
+    height: 350px;
+}
+
+.hotel-unique-desc{
+    height: 200px;
+}
