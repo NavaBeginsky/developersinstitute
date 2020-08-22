@@ -7,11 +7,11 @@ from users import models
 # Create your views here.
 def choose_hotel(current_user):
     if current_user.is_authenticated:
-        unjudged_hotels = Hotels.objects.exclude(liked_by_user=current_user).exclude(rejected_by_user=current_user)
+        unjudged_hotels = Hotels.objects.exclude(liked_by_user=current_user).exclude(rejected_by_user=current_user).exclude(approved=False)
         if len(unjudged_hotels) == 0: #if the user has judged all the hotels on the site
             return False
     else:
-        unjudged_hotels = Hotels.objects.all()
+        unjudged_hotels = Hotels.objects.exclude(approved=False)
     return choice(unjudged_hotels)
 
 def show_hotels(request):
