@@ -1,4 +1,5 @@
-<form method="POST">
+
+<form method="POST" {% if form2 %} enctype="multipart/form-data" {% endif %}>
     {% csrf_token %}
     <table>
         {% if messages %}
