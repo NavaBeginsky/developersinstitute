@@ -18,7 +18,7 @@ class CoordinatesInline(admin.StackedInline):
 
 class HotelsAdmin(admin.ModelAdmin):
     model = Hotels
-    fields = ['name', 'location', 'unique_snippet', 'details', 'booking_website']
+    fields = ['name', 'location', 'unique_snippet', 'details', 'booking_website', 'approved']
     inlines = [CoordinatesInline, PhotosInline, CategoryInline, AmenitiesInline]
 
 admin.site.register(Hotels, HotelsAdmin)

@@ -1,10 +1,22 @@
 from django import forms
 from hotels import models
+from .models import Contact
 
 class AddHotelForm(forms.ModelForm):
     class Meta:
         model = models.Hotels
-        fields = ['name', 'unique_snippet', 'details', 'booking_website']
+        fields = ['name', 'unique_snippet', 'details', 'booking_website', 'contact_email']
+        labels = {
+            'name': 'Hotel name'
+        }
+        widgets = {
+            'unique_snippet': forms.Textarea(attrs={
+                'cols': 60, 
+                'rows': 2, 
+                'placeholder': 'What makes this hotel unique?'
+                }),
+            'details': forms.Textarea(attrs={'cols': 60, 'rows': 15})
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -26,3 +38,12 @@ class HotelPhotosForm(forms.ModelForm):
     class Meta:
         model = models.HotelPhotos
         fields = ['image']
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = '__all__'
+        widgets = {
+            'subject': forms.Textarea(attrs={'cols': 50, 'rows': 1}),
+            'details': forms.Textarea(attrs={'cols': 50, 'rows': 10})
+        }

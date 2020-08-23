@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
-from .forms import AddHotelForm, HotelPhotosForm
-from hotels import models
+from django.contrib.messages.views import SuccessMessageMixin
+from .forms import AddHotelForm, HotelPhotosForm, ContactForm
+from hotels.models import HotelPhotos, Country, Location
+from . import models
 from django.contrib import messages
 from django.forms.models import modelformset_factory
 
@@ -10,7 +12,7 @@ from django.forms.models import modelformset_factory
 # Create your views here.
 def addHotel(request):
     imageFormSet = modelformset_factory(
-        models.HotelPhotos, 
+        HotelPhotos, 
         form=HotelPhotosForm, 
         extra=5
         )
@@ -18,8 +20,8 @@ def addHotel(request):
         hotel_form = AddHotelForm(request.POST)
         photos_formset = imageFormSet(request.POST, request.FILES)
         if hotel_form.is_valid() and photos_formset.is_valid():
-            country, created = models.Country.objects.get_or_create(name = hotel_form.cleaned_data['country'])
-            location, created = models.Location.objects.get_or_create(city=hotel_form.cleaned_data['city'], country=country)
+            country, created = Country.objects.get_or_create(name = hotel_form.cleaned_data['country'])
+            location, created = Location.objects.get_or_create(city=hotel_form.cleaned_data['city'], country=country)
             hotel = hotel_form.save(commit=False)
             hotel.location = location
             hotel.approved = False
@@ -40,8 +42,15 @@ def addHotel(request):
             
     context = {
         'form': AddHotelForm,
-        'photos_formset': imageFormSet(queryset=models.HotelPhotos.objects.none())
+        'photos_formset': imageFormSet(queryset=HotelPhotos.objects.none())
     }
     return render(request, 'contact/addhotel.html', context)
 
-   
+class Contact(SuccessMessageMixin, generic.CreateView):
+    model = models.Contact
+    form_class = ContactForm
+    template_name = 'contact/contact.html'
+    success_message = 'Form submission successful!'
+    
+    def get_success_url(self):
+        return self.request.path

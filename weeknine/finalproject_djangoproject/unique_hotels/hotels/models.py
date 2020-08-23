@@ -27,6 +27,7 @@ class Hotels(models.Model):
     rejected_by_user = models.ManyToManyField(User, related_name='rejected')
     booking_website = models.URLField()
     approved = models.BooleanField(default=True)
+    contact_email = models.EmailField(null=True)
 
     def __str__(self):
         return self.name

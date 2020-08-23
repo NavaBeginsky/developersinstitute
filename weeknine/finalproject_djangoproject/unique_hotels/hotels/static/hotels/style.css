@@ -1,3 +1,7 @@
+.hotel-card{
+    width:500px;
+} 
+
 .hotels-main .hotel-card .hotel-img{
     max-height: 500px;
 }
