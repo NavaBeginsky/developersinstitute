@@ -2,4 +2,5 @@
 {% block content %} 
 <h1>Login</h1>
 {% include "../partials/forms.html" %}
+<p>Forgot your password? <a href="{% url 'password_reset' %}">Reset it here.</a></p>
 {% endblock %}
