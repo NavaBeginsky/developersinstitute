@@ -4,7 +4,7 @@ from annoying.fields import AutoOneToOneField
 
 # Create your models here.
 class UserProfilePic(models.Model):
-    user = AutoOneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     profile_pic = models.ImageField(upload_to='media', default='avatar.png')
 
     def __str__(self):

@@ -1,5 +1,5 @@
 
-<form method="POST" {% if form2 %} enctype="multipart/form-data" {% endif %}>
+<form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <table>
         {% if messages %}
@@ -11,6 +11,21 @@
             {% endfor %}
             </ul>
         {% endif %}
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+
         {{ form }}
         {% if form2 %}
             {{ form2 }}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+        <a class="nav-link {% block details %}{% endblock %}" href="{% url 'update_profile' %}">User Details</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link {% block photo %}{% endblock %}" href="{% url 'update_profile_pic' %}">Profile Photo</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link {% block password %}{% endblock %}" href="{% url 'change_password' %}">Password</a>
+        </li>
+    </ul>
+    <h1>Update Profile</h1>
+    {% block before_form %}{% endblock %}
+    {% include "../partials/forms.html" %}
+    {% if failed_message %}
+        <div class="mt-2">
+            <p class="alert alert-danger">{{failed_message}}</p>
+        </div>
+    {% endif %}
+    {% block after_form %}{% endblock %}
+
+{% endblock %}
