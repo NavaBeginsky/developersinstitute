@@ -17,15 +17,21 @@
         <img src="/media/logo.png">
       </a>
 
-    
-      <div class="nav navbar-nav ml-auto" id="navbarSupportedContent">
-        
+      
+      <!-- <div class="nav navbar-nav ml-auto dropdown" id="navbarSupportedContent"> -->
         {% if user.is_authenticated %}
-          <a href="{% url 'profile' user.username %}">
-            <img class='navbar-nav user-avatar' src='{{ user.userprofilepic.profile_pic.url }}' alt='profile picture' width=60 height=60>
-          </a>
-          {% else %}
-          <a class='navbar-nav' href="{% url 'login' %}">Login </a><span style="padding-left: 4px; padding-right: 4px;"> or </span><a class='navbar-nav' href="{% url 'signup' %}"> Signup</a>
+          <div class="dropdown ml-auto shows">
+            <a class="" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img class='navbar-nav user-avatar' src='{{ user.userprofilepic.profile_pic.url }}' alt='profile picture' width=80 height=80>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="{% url 'profile' user.username %}">Loved Hotels</a>
+              <a class="dropdown-item" href="{% url 'update_profile' %}">Edit Profile</a>
+              <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+            </div>
+          </div>          
+        {% else %}
+          <a class='navbar-nav ml-auto' href="{% url 'login' %}">Login </a><span style="padding-left: 4px; padding-right: 4px;"> or </span><a class='navbar-nav' href="{% url 'signup' %}"> Signup</a>
         {% endif %}
       </div>
     </nav>

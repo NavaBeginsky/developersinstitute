@@ -31,7 +31,11 @@
             <input type='hidden' name='hotel_pk' value='{{ hotel.pk }}'>
             <button type='submit' name='reject' class='reject-button choice float-left'><i class="fas fa-times"></i></button>
         </form>
-        <form method='GET' class='skip-form'><button type='submit' name='skip' class='skip-button choice'><i class="fas fa-forward"></i></button></form>
+        <form method='POST' class='skip-form'>
+            {% csrf_token %}
+            <input type='hidden' name='hotel_pk' value='{{ hotel.pk }}'>
+            <button type='submit' name='skip' class='skip-button choice'><i class="fas fa-forward"></i></button>
+        </form>
         <form method='POST' class='float-right'>
             {% csrf_token %}
             <input type='hidden' name='hotel_pk' value='{{ hotel.pk }}'>
