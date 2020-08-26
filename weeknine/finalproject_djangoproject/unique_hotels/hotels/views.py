@@ -6,6 +6,18 @@ from users import models
 from .forms import CategoryForm, AmenityForm
 
 # Create your views here.
+def filter_hotels(hotels, *args):
+    filtered_hotels = hotels #needs to be assigned in order for the forloop assignment to be able to be passed back
+    for category in args[0]:
+        filtered_hotels = filtered_hotels.filter(categories=category) 
+
+    for amenity in args[1]:
+        filtered_hotels = filtered_hotels.filter(amenities=amenity) 
+
+    if len(filtered_hotels) == 0: 
+            return False
+
+    return filtered_hotels
 
 
 def choose_hotel(current_user, *args):
@@ -17,13 +29,11 @@ def choose_hotel(current_user, *args):
     else:
         unjudged_hotels = Hotels.objects.exclude(approved=False)
 
-    for category in args[0]:
-        unjudged_hotels = unjudged_hotels.filter(categories=category) 
-
-    for amenity in args[1]:
-        unjudged_hotels = unjudged_hotels.filter(amenities=amenity) 
+    filtered_hotels = filter_hotels(unjudged_hotels, *args)
+    if filtered_hotels == False: 
+            return False
         
-    return choice(unjudged_hotels)
+    return choice(filtered_hotels)
 
 
 def show_hotels(request):
@@ -40,13 +50,13 @@ def show_hotels(request):
             return redirect('login')
 
     chosen_hotel = choose_hotel(current_user, request.GET.getlist('categories'), request.GET.getlist('amenities'))
-    if chosen_hotel == False:
-        return render(request, 'hotels/nohotels.html')
-
     context = {
         'hotel': chosen_hotel,
         'cat_form': CategoryForm(request.GET),
         'amen_form': AmenityForm(request.GET)
     }
+
+    if chosen_hotel == False:
+        return render(request, 'hotels/nohotels.html', context)
 
     return render(request, 'hotels/showhotels.html', context)

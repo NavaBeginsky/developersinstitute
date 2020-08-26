@@ -9,6 +9,8 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from .models import UserProfilePic
 from django.contrib.auth.views import PasswordChangeView
+from hotels.views import filter_hotels
+from hotels.forms import CategoryForm, AmenityForm
 
 # Create your views here.
 @method_decorator(login_required, name='dispatch')
@@ -66,7 +68,15 @@ class UserProfile(ListView):
     
     def get_queryset(self):
         self.user = get_object_or_404(User, username=self.kwargs['username'])
-        return self.user.liked.all()
+        hotels = filter_hotels(self.user.liked.all(), self.request.GET.getlist('categories'), self.request.GET.getlist('amenities'))
+        return hotels
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)        
+        context['cat_form'] = CategoryForm(self.request.GET)
+        context['amen_form'] = AmenityForm(self.request.GET)
+        return context
+
 
 
 # def update_loved_hotel():

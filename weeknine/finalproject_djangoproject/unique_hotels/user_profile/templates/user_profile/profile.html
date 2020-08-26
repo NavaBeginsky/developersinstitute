@@ -6,8 +6,14 @@
 {% block content %}
 <h2>My Loved Hotels</h2>
 <div class='profile-page'>
-    {% for hotel in object_list%}
-        {% include 'partials/hotelcards.html' with current_page='profile' %}
-    {% endfor %}
+    {% include 'partials/hotel_filters.html' %}
+    {% if object_list %}
+            {% for hotel in object_list%}
+            {% include 'partials/hotelcards.html' with current_page='profile' %}
+        {% endfor %}
+    {% else %}
+        <p>Oh no! There are no hotels yet... Try clearing your filters or <a href='{% url "show_hotels" %}'>check out more hotels here.</a></p>
+    {% endif %}
+
 </div>
 {% endblock %}

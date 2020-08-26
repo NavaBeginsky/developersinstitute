@@ -6,26 +6,7 @@
 {% block content %}
 
 <div class='hotels-main container'>
-    <span>Filter by:</span>
-    <form method="GET" class="px-4 py-3">
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                category
-            </button>
-            <div class="dropdown-menu">
-                    {{ cat_form }}
-            </div>
-        </div>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                amenities
-            </button>
-            <div class="dropdown-menu">
-                    {{ amen_form }}
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    {% include 'partials/hotel_filters.html' %}
     {% include 'partials/hotelcards.html' with current_page='home' %}
 </div>
 {% endblock %}
