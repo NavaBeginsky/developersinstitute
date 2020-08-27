@@ -11,6 +11,8 @@ from .models import UserProfilePic
 from django.contrib.auth.views import PasswordChangeView
 from hotels.views import filter_hotels
 from hotels.forms import CategoryForm, AmenityForm
+from django.http import JsonResponse
+from django.core import serializers
 
 # Create your views here.
 @method_decorator(login_required, name='dispatch')
@@ -67,15 +69,29 @@ class UserProfile(ListView):
     template_name = 'user_profile/profile.html'
     
     def get_queryset(self):
-        self.user = get_object_or_404(User, username=self.kwargs['username'])
-        hotels = filter_hotels(self.user.liked.all(), self.request.GET.getlist('categories'), self.request.GET.getlist('amenities'))
+        self.user_profile = get_object_or_404(User, username=self.kwargs['username'])
+        hotels = filter_hotels(self.user_profile.liked.all(), self.request.GET.getlist('categories'), self.request.GET.getlist('amenities'))
         return hotels
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)        
         context['cat_form'] = CategoryForm(self.request.GET)
         context['amen_form'] = AmenityForm(self.request.GET)
+        context['self'] = True if self.request.user == self.user_profile else False
         return context
+
+def likeUnlike(request):
+    current_user = request.user
+    if request.is_ajax and request.method == "POST":
+        hotel = Hotels.objects.get(pk=request.POST.get('hotel_pk'))
+        if hotel in Hotels.objects.filter(liked_by_user=current_user):
+            hotel.liked_by_user.remove(current_user)
+        else:
+            hotel.liked_by_user.add(current_user)
+        return JsonResponse({"success": "like/unlike successful"}, status=200)
+    else:
+        return JsonResponse({"error": "like/unlike did not go through"}, status=400)
+
 
 
 

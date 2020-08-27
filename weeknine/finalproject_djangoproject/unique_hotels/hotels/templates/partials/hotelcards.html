@@ -39,10 +39,16 @@
         <form method='POST' class='float-right'>
             {% csrf_token %}
             <input type='hidden' name='hotel_pk' value='{{ hotel.pk }}'>
-            <button type='submit' name='like' class='like-button choice'><i class="far fa-heart"></i></button>
+            <button type='submit' name='like' class='like-button choice'><i class="far fa-heart" id='like_heart'></i></button>
         </form>
     </div>
-
+    <!-- check if logged in as self when viewing the profile page -->
+    {% elif self %}
+        <form method='POST' class='text-center like_unlike'>
+            {% csrf_token %}
+            <input type='hidden' name='hotel_pk' value='{{ hotel.pk }}'>
+            <button type='submit' name='like' class='like-button choice red'><i class="far fa-heart"></i></button>
+        </form>
     {% endif %}
 
     <div class="card-footer">

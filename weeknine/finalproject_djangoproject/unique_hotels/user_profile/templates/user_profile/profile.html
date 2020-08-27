@@ -17,3 +17,21 @@
 
 </div>
 {% endblock %}
+
+{% block javascript %}
+<script>
+    $(".like_unlike").submit(function(e) {
+        e.preventDefault();
+        $(this).find(".like-button").toggleClass('red');
+        var serializedData = $(this).serialize();
+        $.ajax({
+            type: 'POST',
+            url: "{% url 'like_unlike' %}",
+            data: serializedData,
+            error: function (response) {
+                console.log(response["responseJSON"]["error"]);
+            }
+        })
+    })
+</script>
+{% endblock javascript %}
