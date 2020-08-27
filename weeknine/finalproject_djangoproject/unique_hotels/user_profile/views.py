@@ -94,15 +94,3 @@ def likeUnlike(request):
 
 
 
-
-# def update_loved_hotel():
-#     user = get_object_or_404(User, username=self.kwargs['username'])
-#     hotel = Hotels.objects.get(pk=request.POST["hotel_pk"])
-#     if hotel in Hotels.objects.filter(liked_by_user=user):
-#         hotel.liked_by_user.remove(user)
-#     else:
-#         hotel.liked_by_user.add(user)
-    
-#     return UserProfile.as_view()
-
-
