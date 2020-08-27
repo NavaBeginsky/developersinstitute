@@ -47,7 +47,7 @@
         <form method='POST' class='text-center like_unlike'>
             {% csrf_token %}
             <input type='hidden' name='hotel_pk' value='{{ hotel.pk }}'>
-            <button type='submit' name='like' class='like-button choice red'><i class="far fa-heart"></i></button>
+            <button type='submit' name='like' class='like-button choice red'><i class="fas fa-heart"></i></button>
         </form>
     {% endif %}
 

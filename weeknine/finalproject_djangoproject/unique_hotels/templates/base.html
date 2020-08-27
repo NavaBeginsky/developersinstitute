@@ -24,10 +24,9 @@
 
     <!-- <div class="nav navbar-nav ml-auto dropdown" id="navbarSupportedContent"> -->
     {% if user.is_authenticated %}
-    <div class="dropdown ml-auto shows">
+    <div class="dropdown user_menu ml-auto shows">
       <a class="" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img class='navbar-nav user-avatar' src='{{ user.userprofilepic.profile_pic.url }}' alt='profile picture'
-          width=80 height=80>
+        <img class='navbar-nav user-avatar' src='{{ user.userprofilepic.profile_pic.url }}' alt='profile picture'>
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" href="{% url 'profile' user.username %}">Loved Hotels</a>
