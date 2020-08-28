@@ -46,7 +46,6 @@ class UpdateProfilePhoto(SuccessMessageMixin, UpdateView):
         super(UpdateProfilePhoto, self).form_valid(form)
         print(form.cleaned_data)
         return redirect(self.get_success_url())
-
         
 class UpdatePassword(SuccessMessageMixin, PasswordChangeView):
     template_name = 'user_profile/change_password.html'
@@ -54,7 +53,9 @@ class UpdatePassword(SuccessMessageMixin, PasswordChangeView):
 
     def get_success_url(self):
         return self.request.path
+        
 
+@method_decorator(login_required, name='dispatch')
 class DeleteAccount(DeleteView):
     model = User
     template_name = 'user_profile/delete_profile.html'
@@ -62,7 +63,6 @@ class DeleteAccount(DeleteView):
 
     def get_object(self):
         return self.request.user
-
 
 
 class UserProfile(ListView):
