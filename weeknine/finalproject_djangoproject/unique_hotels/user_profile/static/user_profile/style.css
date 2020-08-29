@@ -2,9 +2,15 @@
     color: red;
 }
 
+.profile-hotels{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start
+}
+
 .profile-page .hotel-card{
     width: 500px;
-    display: inline-block;
+    /* display: inline-block; */
     margin: 20px;
 }
 

@@ -1,6 +1,6 @@
-<span>Filter by:</span>
 <form method="GET" class="px-4 py-3">
-    <div class="dropdown">
+    <span class='filters'>Filter by:</span>
+    <div class="dropdown filters">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             category
         </button>
@@ -8,7 +8,7 @@
                 {{ cat_form }}
         </div>
     </div>
-    <div class="dropdown">
+    <div class="dropdown filters">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             amenities
         </button>
@@ -16,5 +16,5 @@
                 {{ amen_form }}
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary filters">Submit</button>
 </form>
