@@ -1,7 +1,3 @@
-.hotel-card{
-    width:1000px;
-} 
-
 .hotels-main .hotel-card .hotel-img{
     max-height: 500px;
 }
@@ -16,14 +12,12 @@
     display: inline-block;
 }
 
-
-/* 
-.like-button{
-
+.card ul{
+    list-style-type: circle;
 }
 
-.reject-button{
-
+@media screen and (min-width: 768px){
+    .hotel-card{
+        width:1000px;
+    } 
 }
-
-.skip-button */

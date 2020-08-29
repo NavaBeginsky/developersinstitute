@@ -10,6 +10,8 @@ class UpdateUserForm(UserChangeForm):
         fields = ['username', 'first_name', 'last_name', 'email']
 
 class UpdatePictureForm(forms.ModelForm):
+    profile_pic = forms.ImageField(error_messages = {'invalid':("Image files only")}, widget=forms.FileInput)
+
     class Meta:
         model = UserProfilePic
         fields = ['profile_pic']

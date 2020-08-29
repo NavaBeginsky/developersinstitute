@@ -31,5 +31,5 @@
             {{ form2 }}
         {% endif %}
     </table>
-    <input type="submit">
+    <input class='submit btn btn-info' type="submit" {% if submit %} value='{{ submit }}' {% endif %}>
 </form>

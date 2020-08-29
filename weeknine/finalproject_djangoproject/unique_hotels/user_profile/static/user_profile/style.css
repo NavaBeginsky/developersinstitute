@@ -21,3 +21,8 @@
 .hotel-unique-desc{
     height: 200px;
 }
+
+.edit-profile-form{
+    display: flex;
+    justify-content: center;
+}

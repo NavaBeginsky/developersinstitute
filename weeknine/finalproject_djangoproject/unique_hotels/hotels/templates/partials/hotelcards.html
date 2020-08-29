@@ -8,7 +8,7 @@
                 {% else %}
                     <div class="carousel-item">
                 {% endif %}
-                        <img src="{{ photo.image.url }}" class="d-block w-100 hotel-img" alt="{{ hotel.name }}">
+                        <img src="{{ photo.image.url }}" class="d-block w-100 img-responsive hotel-img" alt="{{ hotel.name }}">
                     </div>
             {% endfor %}
         </div>
@@ -60,19 +60,23 @@
     <div class="collapse" id="moreDetails-{{ forloop.counter }}">
         <div class="card card-body">
             <h3>About {{ hotel.name }}:</h3>
-            {{ hotel.details }}
+            <p>{{ hotel.details }}</p>
+            {% if hotels.amenities_set.all != '[]' %}
             <h3>Amenities:</h3>
             <ul>
                 {% for amenity in hotel.amenities_set.all %}
                 <li>{{ amenity }}</li>
                 {% endfor %}
             </ul>
+            {% endif %}
+            {% if hotels.categories_set.all != '[]' %}
             <h3>Categories:</h3>
             <ul>
                 {% for category in hotel.categories_set.all %}
                 <li>{{ category }}</li>
                 {% endfor %}
             </ul>
+            {% endif %}
         </div>
     </div>
 </div>
