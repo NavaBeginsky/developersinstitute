@@ -1,11 +1,11 @@
-
+{% load crispy_forms_tags %}
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <table>
         {% if messages %}
             <ul class="messages">
             {% for message in messages %}
-                <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> 
+                <li  {% if message.tags %} class=" {{ message.tags }} alert alert-info" {% endif %}> 
                     {{ message }} 
                 </li>
             {% endfor %}
@@ -25,10 +25,12 @@
                 </div>
             {% endfor %}
         {% endif %}
+        
+        {% crispy form %}
 
-        {{ form }}
         {% if form2 %}
-            {{ form2 }}
+            {{ form2.management_form }}
+            {% crispy form2 %}
         {% endif %}
     </table>
     <input class='submit btn btn-info' type="submit" {% if submit %} value='{{ submit }}' {% endif %}>

@@ -58,13 +58,15 @@
     </div>
     {% endif %}
   </nav>
-  {{ user.pk }}
   {% block content %}{% endblock %}
 
   <!-- Footer -->
   <footer class="page-footer font-small blue pt-4">
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
-      <a href="#">Unique Stays</a>
+    <hr>
+    <div class='footer-content'>
+      <a class='footer-links' href="{% url 'addhotel' %}">Submit a Unique Hotel</a><br>
+      <a class='footer-links' href="{% url 'contact' %}">Contact Us</a>
+      <div class="footer-links footer-copyright text-center">© 2020 Copyright: Unique Stays</div>
     </div>
   </footer>
 

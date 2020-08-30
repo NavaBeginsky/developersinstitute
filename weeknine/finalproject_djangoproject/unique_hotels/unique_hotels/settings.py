@@ -27,7 +27,7 @@ SECRET_KEY = 'b+(^y#psns5fn3azz@u&v6bry9=4h1d7nq*ke-yhsk#f9_68@j'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
+    '127.0.0.1', 
     '10.100.102.13'
 ]
 
@@ -45,8 +45,11 @@ INSTALLED_APPS = [
     'contact_forms',
     'users',
     'user_profile',
-    'annoying'
+    'annoying',
+    'crispy_forms',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

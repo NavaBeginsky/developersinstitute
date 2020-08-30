@@ -41,3 +41,69 @@
     display: flex;
     justify-content: center;
 }
+
+.no-hotels{
+    margin-left: 23px;
+    font-weight: bold;
+}
+
+.profile-settings{
+    margin-top: 20px;
+}
+
+.change-photo{
+    display: flex;
+    width: 300px;
+    align-items: center;
+    flex-direction: column;
+}
+
+.photo-form{
+    margin-bottom: 15px;
+}
+
+.photo-form + form table{
+    position: relative;
+    right: 20px;
+}
+
+.avatar-profile{
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+}
+
+.submit, .delete-btn{
+    width: 150px;
+    align-self: center;
+    /* position: relative;
+    left: 85px;
+    margin: 10px; */
+}
+
+.profile-settings{
+    border-right: 1px lightgrey solid;
+    border-bottom: 1px lightgrey solid;
+    padding-left: 20px;
+    width: 420px;
+    padding-bottom: 30px;
+}
+
+.profile-settings form{
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.profile-settings form th{
+    width: 120px;
+
+}
+
+.delete-btn{
+    margin-top: 5px;
+}
+
+.messages{
+    align-self: flex-start;
+}

@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from hotels.models import Hotels
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.decorators import login_required
-from .forms import UpdateUserForm, UpdatePictureForm
+from .forms import UpdateUserForm, UpdatePictureForm, ChangePassword
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from .models import UserProfilePic
@@ -50,6 +50,7 @@ class UpdateProfilePhoto(SuccessMessageMixin, UpdateView):
 class UpdatePassword(SuccessMessageMixin, PasswordChangeView):
     template_name = 'user_profile/change_password.html'
     success_message = 'Password Updated Successfully!'
+    form_class = ChangePassword
 
     def get_success_url(self):
         return self.request.path

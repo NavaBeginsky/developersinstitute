@@ -14,7 +14,7 @@
         {% endfor %}
         </div>
     {% else %}
-        <p>Oh no! There are no hotels yet... Try clearing your filters or <a href='{% url "show_hotels" %}'>check out more hotels here.</a></p>
+        <p class='no-hotels'>Oh no! There are no hotels yet... Try clearing your filters or <a href='{% url "show_hotels" %}'>check out more hotels.</a></p>
     {% endif %}
 
 </div>

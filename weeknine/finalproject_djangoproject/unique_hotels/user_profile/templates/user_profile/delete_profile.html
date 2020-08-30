@@ -1,10 +1,7 @@
 {% extends 'base.html' %}
-{% load static %}
-{% block css %}
-    <link rel="stylesheet" href="{% static 'user_profile/style.css' %}">
-{% endblock %}
+
 {% block content %}
-<div class='delete-form'>
+<div class='delete-page'>
     <form method="POST" class='delete-form'>
         {% csrf_token %}
         <p>Are you sure you want to delete your account?</p>

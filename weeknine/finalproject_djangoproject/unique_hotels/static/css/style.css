@@ -1,3 +1,26 @@
+html{ 
+    height:100%; 
+}
+
+body{ 
+    min-height:100%; 
+    padding:0; 
+    margin:0; 
+    position:relative; 
+}
+
+body::after {
+    content: '';
+    display: block;
+    height: 50px; /* Set same as footer's height */
+  }
+  
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+  }
 
 .logo-outer-link{
     position: relative;
@@ -36,15 +59,26 @@ tr td input {
     height: 35px;
     border: 1px lightgrey solid;
 }
-/* 
-.user-container{
-    margin-right: 10px;
-} */
 
-.login-signup{
+.login-signup, .user_menu{
     margin-right: 15px;
 }
 
+.errorlist{
+    display: none;
+}
+
+.footer-links{
+    color: #5A6268
+}
+
+.footer-content{
+    padding-left: 23px;
+}
+
+.footer-copyright{
+    margin-top: 3px;
+}
 
 @media screen and (min-width: 768px){
     .user_menu:hover .dropdown-menu{
