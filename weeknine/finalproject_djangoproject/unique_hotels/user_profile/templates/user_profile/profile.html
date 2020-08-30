@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block css %}
+    <link rel="stylesheet" href="{% static 'hotels/style.css' %}">
     <link rel="stylesheet" href="{% static 'user_profile/style.css' %}">
 {% endblock %}
 {% block content %}
-<h2>My Loved Hotels</h2>
+<h2 class='profile-header'>Loved Hotels</h2>
 <div class='profile-page'>
     {% include 'partials/hotel_filters.html' %}
     {% if object_list %}

@@ -76,9 +76,6 @@
 .submit, .delete-btn{
     width: 150px;
     align-self: center;
-    /* position: relative;
-    left: 85px;
-    margin: 10px; */
 }
 
 .profile-settings{
@@ -106,4 +103,20 @@
 
 .messages{
     align-self: flex-start;
+}
+
+.like_unlike{
+    margin-bottom: 8px;
+}
+
+.profile-header{
+    margin-top: 15px;
+}
+
+@media screen and (max-width: 768px){
+
+    .card-footer{
+        padding: 10px;
+    }
+
 }

@@ -60,10 +60,6 @@ tr td input {
     border: 1px lightgrey solid;
 }
 
-.login-signup, .user_menu{
-    margin-right: 15px;
-}
-
 .errorlist{
     display: none;
 }
@@ -86,9 +82,13 @@ tr td input {
       }
     }
 
+    .login-signup, .user_menu{
+        margin-right: 15px;
+    }
+
 @media screen and (max-width: 768px){
     .logo{
-        width: 250px;
+        width: 200px;
     }
 
     .user-avatar{
@@ -96,4 +96,9 @@ tr td input {
         height: 50px;
         border-radius: 25px;
     }
+
+    .login-signup{
+        display: inline-block;
+    }
+
 }

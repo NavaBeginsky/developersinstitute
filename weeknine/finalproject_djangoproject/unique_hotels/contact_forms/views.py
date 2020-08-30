@@ -28,6 +28,7 @@ def addHotel(request):
             hotel.save()
 
             images = photos_formset.save(commit=False)
+            print(photos_formset)
             for image in images:
                 image.hotel = hotel
                 image.save()
