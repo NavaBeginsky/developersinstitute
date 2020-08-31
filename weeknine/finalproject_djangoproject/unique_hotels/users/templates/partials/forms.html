@@ -1,5 +1,5 @@
 {% load crispy_forms_tags %}
-<form method="POST" enctype="multipart/form-data">
+<form method="POST" enctype="multipart/form-data" class='uniForm'>
     {% csrf_token %}
     <table>
         {% if messages %}
@@ -25,12 +25,12 @@
                 </div>
             {% endfor %}
         {% endif %}
-        
-        {% crispy form %}
 
         {% if form2 %}
-            {{ form2.management_form }}
-            {% crispy form2 %}
+            {{ form | crispy }}
+            {{ form2|crispy }}
+        {% else %}
+            {% crispy form %}
         {% endif %}
     </table>
     <input class='submit btn btn-info' type="submit" {% if submit %} value='{{ submit }}' {% endif %}>
