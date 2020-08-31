@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% include 'partials/hotel_filters.html' %}
+<h3>Sorry! We seem to have run out of hotels in your area. Click on the button to check out the ones you've already favorited or reset your filters for more results!</h3>
+<a class='btn btn-secondary' href="{% url 'profile' user.username %}">Take me to my loved hotels</a>
+
+{% endblock %}
