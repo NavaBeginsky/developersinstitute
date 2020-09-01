@@ -13,6 +13,7 @@ from hotels.views import filter_hotels
 from hotels.forms import CategoryForm, AmenityForm
 from django.http import JsonResponse
 from django.core import serializers
+from django.conf import settings
 
 # Create your views here.
 @method_decorator(login_required, name='dispatch')
@@ -79,6 +80,8 @@ class UserProfile(ListView):
         context['cat_form'] = CategoryForm(self.request.GET)
         context['amen_form'] = AmenityForm(self.request.GET)
         context['self'] = True if self.request.user == self.user_profile else False
+        context['apikey'] = settings.GOOGLE_API
+        context['coordinates'] = [([float(hotel.coordinates.lat), float(hotel.coordinates.lon)]) for hotel in context['object_list']]
         return context
 
 def likeUnlike(request):

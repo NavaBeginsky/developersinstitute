@@ -10,10 +10,11 @@
     {% include 'partials/hotel_filters.html' %}
     {% if object_list %}
     <div class='profile-hotels'>
-        {% for hotel in object_list%}
+        {% for hotel in object_list %}
             {% include 'partials/hotelcards.html' with current_page='profile' %}
         {% endfor %}
-        </div>
+    </div>
+    <div id='map'></div>
     {% else %}
         <p class='no-hotels'>Oh no! There are no hotels yet... Try clearing your filters or <a href='{% url "show_hotels" %}'>check out more hotels.</a></p>
     {% endif %}
@@ -36,5 +37,23 @@
             }
         })
     })
+</script>
+<script>
+    // Initialize and add the map
+    function initMap() {
+      let israel = {lat: 31.5699505, lng: 34.5143476};
+      let map = new google.maps.Map(
+          document.getElementById('map'), {zoom: 7, center: israel});
+      let coordinates = JSON.parse('{{coordinates}}');
+      for(co of coordinates){
+        let marker = new google.maps.Marker({
+            position: {lat: co[0], lng: co[1]}, 
+            map: map, 
+        });
+        }       
+    }
+</script>
+<script defer
+    src="http://maps.googleapis.com/maps/api/js?key={{apikey}}&callback=initMap">
 </script>
 {% endblock javascript %}
