@@ -20,6 +20,13 @@
     margin: auto;
 }
 
+.map-image{
+    float:left;
+    width: 150px;
+    height: 115px;
+    padding-right: 10px;
+}
+
 .profile-page .hotel-card{
     width: 500px;
     /* display: inline-block; */
@@ -129,6 +136,20 @@
 
     .card-footer{
         padding: 10px;
+    }
+
+    #map{
+        width: 500px;
+        height: 400px;
+        display: block;
+        margin: auto;
+    }
+
+    .map-image{
+        float:left;
+        width: 100px;
+        height: 85px;
+        padding-right: 10px;
     }
 
 }

@@ -12,8 +12,9 @@ from django.contrib.auth.views import PasswordChangeView
 from hotels.views import filter_hotels
 from hotels.forms import CategoryForm, AmenityForm
 from django.http import JsonResponse
-from django.core import serializers
+from django.core.serializers import serialize
 from django.conf import settings
+import re
 
 # Create your views here.
 @method_decorator(login_required, name='dispatch')
@@ -81,8 +82,10 @@ class UserProfile(ListView):
         context['amen_form'] = AmenityForm(self.request.GET)
         context['self'] = True if self.request.user == self.user_profile else False
         context['apikey'] = settings.GOOGLE_API
-        context['coordinates'] = [([float(hotel.coordinates.lat), float(hotel.coordinates.lon)]) for hotel in context['object_list']]
+        context['map_info'] = [([float(hotel.coordinates.lat), float(hotel.coordinates.lon), hotel.name, hotel.unique_snippet, hotel.hotelphotos_set.first().image.url]) for hotel in context['object_list']]
         return context
+     
+
 
 def likeUnlike(request):
     current_user = request.user
@@ -95,6 +98,5 @@ def likeUnlike(request):
         return JsonResponse({"success": "like/unlike successful"}, status=200)
     else:
         return JsonResponse({"error": "like/unlike did not go through"}, status=400)
-
 
 
