@@ -21,10 +21,11 @@
             </div>
         </div>
         <div class="dropdown filters navbar-nav">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick='getLocation()'>
                 Distance
             </button>
             <div class="dropdown-menu">
+                <input type='hidden' name='current_location' id='location' value=''>
                     {{ dist_form }}
             </div>
         </div>

@@ -10,3 +10,21 @@
     {% include 'partials/hotelcards.html' with current_page='home' %}
 </div>
 {% endblock %}
+
+{% block javascript %}
+<script>
+    var location_field = document.getElementById("location");
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(addPositionToRequest);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+     }
+
+    function addPositionToRequest(position) {
+        latLong= position.coords.latitude + ' ' + position.coords.longitude;
+        location_field.setAttribute('value', latLong) 
+    }
+</script>
+{% endblock %}
