@@ -25,8 +25,9 @@
                 Distance
             </button>
             <div class="dropdown-menu">
-                <input type='hidden' name='current_location' id='location' value=''>
-                    {{ dist_form }}
+                {{ dist_form.lat.as_hidden }}
+                {{ dist_form.lon.as_hidden }}
+                {{ dist_form.radius }}
             </div>
         </div>
         <button type="submit" class="btn btn-primary filters filter-submit navbar-nav">Submit</button>

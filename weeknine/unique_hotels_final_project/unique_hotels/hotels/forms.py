@@ -18,6 +18,8 @@ class AmenityForm(forms.Form):
     )
 
 class LocationForm(forms.Form):
+    lat = forms.FloatField(required=False)
+    lon = forms.FloatField(required=False)
     radius = forms.IntegerField(required=False)
 
     def __init__(self, *args, **kwargs):

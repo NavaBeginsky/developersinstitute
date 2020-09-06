@@ -67,4 +67,18 @@
 </script>
 <script defer src="http://maps.googleapis.com/maps/api/js?key={{apikey}}&callback=initMap">
 </script>
+<script>
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(addPositionToRequest);
+        } 
+     }
+
+    function addPositionToRequest(position) {
+        var lat_field = document.getElementById("id_lat");
+        var lon_field = document.getElementById("id_lon");
+        lat_field.setAttribute('value', position.coords.latitude) 
+        lon_field.setAttribute('value', position.coords.longitude) 
+    }
+</script>
 {% endblock javascript %}

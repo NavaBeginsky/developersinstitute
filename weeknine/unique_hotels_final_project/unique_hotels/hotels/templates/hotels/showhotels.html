@@ -13,18 +13,17 @@
 
 {% block javascript %}
 <script>
-    var location_field = document.getElementById("location");
     function getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(addPositionToRequest);
-        } else {
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
+        } 
      }
 
     function addPositionToRequest(position) {
-        latLong= position.coords.latitude + ' ' + position.coords.longitude;
-        location_field.setAttribute('value', latLong) 
+        var lat_field = document.getElementById("id_lat");
+        var lon_field = document.getElementById("id_lon");
+        lat_field.setAttribute('value', position.coords.latitude) 
+        lon_field.setAttribute('value', position.coords.longitude) 
     }
 </script>
 {% endblock %}

@@ -10,13 +10,16 @@ from django.contrib.gis.measure import D
 # Create your views here.
 def filter_hotels(hotels, *args):
     filtered_hotels = hotels #needs to be assigned in order for the forloop assignment to be able to be passed back
-    pnt = GEOSGeometry('POINT(34.5143476 31.5699505)')
-    filtered_hotels = hotels.filter(point_coordinates__distance_lte=(pnt, D(km=300)))
     for category in args[0]:
         filtered_hotels = filtered_hotels.filter(categories=category) 
 
     for amenity in args[1]:
         filtered_hotels = filtered_hotels.filter(amenities=amenity) 
+
+    if args[2] and args[3] and args[4]:
+        location = GEOSGeometry(f'POINT({args[2]} {args[3]})')#points are long/lat and get location is lat/long, so it has to be reversed
+        filtered_hotels = filtered_hotels.filter(point_coordinates__distance_lte=(location, D(km=(args[4]))))
+        print(type(args[4]))
 
     if len(filtered_hotels) == 0: 
             return False
@@ -52,8 +55,18 @@ def show_hotels(request):
 
         elif 'skip' not in request.POST:  # user should be able to skip through hotels even if not logged in
             return redirect('login')
-
-    chosen_hotel = choose_hotel(current_user, request.GET.getlist('categories'), request.GET.getlist('amenities'))
+    
+    locationForm = LocationForm(request.GET)
+    if locationForm.is_valid():#the only form that takes a user input so it needs to be cleaned
+        if 'lat' in request.GET and 'radius' in request.GET:
+            lat = locationForm.cleaned_data['lat']
+            lon = locationForm.cleaned_data['lon']
+            distance = locationForm.cleaned_data['radius']
+    else:
+        lat, lon, distance = None, None, None
+    
+    chosen_hotel = choose_hotel(current_user, request.GET.getlist('categories'), request.GET.getlist('amenities'), lat, lon, distance)
+    
     context = {
         'hotel': chosen_hotel,
         'cat_form': CategoryForm(request.GET),
