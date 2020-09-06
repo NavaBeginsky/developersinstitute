@@ -17,7 +17,7 @@ def filter_hotels(hotels, *args):
         filtered_hotels = filtered_hotels.filter(amenities=amenity) 
 
     if args[2] and args[3] and args[4]:
-        location = GEOSGeometry(f'POINT({args[2]} {args[3]})')#points are long/lat and get location is lat/long, so it has to be reversed
+        location = GEOSGeometry(f'POINT({args[3]} {args[2]})')#points are long/lat and get location is lat/long, so it has to be reversed
         filtered_hotels = filtered_hotels.filter(point_coordinates__distance_lte=(location, D(km=(args[4]))))
         print(type(args[4]))
 
@@ -62,9 +62,8 @@ def show_hotels(request):
             lat = locationForm.cleaned_data['lat']
             lon = locationForm.cleaned_data['lon']
             distance = locationForm.cleaned_data['radius']
-    else:
-        lat, lon, distance = None, None, None
-    
+        else:
+            lat, lon, distance = None, None, None
     chosen_hotel = choose_hotel(current_user, request.GET.getlist('categories'), request.GET.getlist('amenities'), lat, lon, distance)
     
     context = {

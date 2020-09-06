@@ -1,15 +1,19 @@
 from django import forms
 from hotels import models
 from .models import Contact
+from mapwidgets.widgets import GooglePointFieldWidget
+
 
 class AddHotelForm(forms.ModelForm):
     class Meta:
         model = models.Hotels
-        fields = ['name', 'unique_snippet', 'details', 'booking_website', 'contact_email']
+        fields = ['name', 'unique_snippet', 'point_coordinates', 'details', 'booking_website', 'contact_email']
         labels = {
-            'name': 'Hotel name'
+            'name': 'Hotel name',
+            'point_coordinates': 'Location on map'
         }
         widgets = {
+            'point_coordinates': GooglePointFieldWidget,
             'unique_snippet': forms.Textarea(attrs={
                 'cols': 60, 
                 'rows': 2, 

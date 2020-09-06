@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'annoying',
     'crispy_forms',
     'django.contrib.gis',
+    'mapwidgets',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -146,3 +147,13 @@ try:
    from .local_settings import *
 except ImportError:
     raise Exception('A local_settings.py file is required to run this project')
+
+
+MAP_WIDGETS = {
+    "GooglePointFieldWidget": (
+        ("zoom", 7),
+        ("mapCenterLocation", [31.5699505, 34.5143476]),
+        ("markerFitZoom", 12),
+    ),
+    "GOOGLE_MAP_API_KEY": GOOGLE_API
+}

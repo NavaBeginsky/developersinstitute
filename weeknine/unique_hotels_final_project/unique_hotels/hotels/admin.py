@@ -1,5 +1,7 @@
 from django.contrib import admin
+from django.contrib.gis.db import models
 from django.contrib.gis.admin import OSMGeoAdmin
+from mapwidgets.widgets import GooglePointFieldWidget
 from .models import Hotels, HotelPhotos, Amenities, Categories, Coordinates, Location, Country
 
 # Register your models here.
@@ -17,10 +19,13 @@ class CoordinatesInline(admin.StackedInline):
     model = Coordinates
 
 
-class HotelsAdmin(OSMGeoAdmin):
+class HotelsAdmin(admin.ModelAdmin):
     model = Hotels
     fields = ['name', 'location', 'point_coordinates', 'unique_snippet', 'details', 'booking_website', 'approved']
     inlines = [CoordinatesInline, PhotosInline, CategoryInline, AmenitiesInline]
+    formfield_overrides = {
+        models.PointField: {"widget": GooglePointFieldWidget}
+    }
 
 admin.site.register(Hotels, HotelsAdmin)
 admin.site.register(Location)
