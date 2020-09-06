@@ -32,6 +32,12 @@
     margin-top: 5px;
 }
 
+#id_radius{
+    margin: 5px;
+    width: 150px;
+    display: inline-block;
+}
+
 @media screen and (min-width: 768px){
     .hotel-card{
         width:1000px;

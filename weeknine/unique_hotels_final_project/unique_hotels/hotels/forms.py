@@ -16,3 +16,10 @@ class AmenityForm(forms.Form):
         widget=forms.CheckboxSelectMultiple,
         choices=amenity_options
     )
+
+class LocationForm(forms.Form):
+    radius = forms.IntegerField(required=False)
+
+    def __init__(self, *args, **kwargs):
+        super(LocationForm, self).__init__(*args, **kwargs)
+        self.fields['radius'].label = "Kilometers"

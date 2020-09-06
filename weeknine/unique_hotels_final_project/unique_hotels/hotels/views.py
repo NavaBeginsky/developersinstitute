@@ -3,11 +3,15 @@ from .models import Hotels, HotelPhotos
 from random import choice
 from django.contrib.auth.decorators import login_required
 from users import models
-from .forms import CategoryForm, AmenityForm
+from .forms import CategoryForm, AmenityForm, LocationForm
+from django.contrib.gis.geos import GEOSGeometry
+from django.contrib.gis.measure import D
 
 # Create your views here.
 def filter_hotels(hotels, *args):
     filtered_hotels = hotels #needs to be assigned in order for the forloop assignment to be able to be passed back
+    pnt = GEOSGeometry('POINT(34.5143476 31.5699505)')
+    filtered_hotels = hotels.filter(point_coordinates__distance_lte=(pnt, D(km=300)))
     for category in args[0]:
         filtered_hotels = filtered_hotels.filter(categories=category) 
 
@@ -53,7 +57,8 @@ def show_hotels(request):
     context = {
         'hotel': chosen_hotel,
         'cat_form': CategoryForm(request.GET),
-        'amen_form': AmenityForm(request.GET)
+        'amen_form': AmenityForm(request.GET),
+        'dist_form': LocationForm(request.GET)
     }
 
     if chosen_hotel == False:

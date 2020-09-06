@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'user_profile',
     'annoying',
     'crispy_forms',
+    'django.contrib.gis',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

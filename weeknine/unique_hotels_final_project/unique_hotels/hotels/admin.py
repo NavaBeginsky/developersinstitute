@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.gis.admin import OSMGeoAdmin
 from .models import Hotels, HotelPhotos, Amenities, Categories, Coordinates, Location, Country
 
 # Register your models here.
@@ -16,9 +17,9 @@ class CoordinatesInline(admin.StackedInline):
     model = Coordinates
 
 
-class HotelsAdmin(admin.ModelAdmin):
+class HotelsAdmin(OSMGeoAdmin):
     model = Hotels
-    fields = ['name', 'location', 'unique_snippet', 'details', 'booking_website', 'approved']
+    fields = ['name', 'location', 'point_coordinates', 'unique_snippet', 'details', 'booking_website', 'approved']
     inlines = [CoordinatesInline, PhotosInline, CategoryInline, AmenitiesInline]
 
 admin.site.register(Hotels, HotelsAdmin)
