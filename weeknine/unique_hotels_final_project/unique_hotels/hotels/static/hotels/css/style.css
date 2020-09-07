@@ -37,7 +37,10 @@
     width: 150px;
     display: inline-block;
 }
-
+#hotel-card.swiperight{
+    transition: right 0.5s ease;
+}
+    
 @media screen and (min-width: 768px){
     .hotel-card{
         width:1000px;

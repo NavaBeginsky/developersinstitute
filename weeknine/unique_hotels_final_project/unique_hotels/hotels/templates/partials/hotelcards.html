@@ -1,4 +1,4 @@
-<div class="card hotel-card">
+<div class="card hotel-card" id='hotel-card' draggable="true">
     <h5 class="card-header">{{ hotel.name }}</h5>
     <div id="carouselControls-{{ forloop.counter }}" class="carousel slide card-img-top" data-ride="carousel">
         <div class="carousel-inner">
@@ -29,7 +29,7 @@
         <form method='POST'>
             {% csrf_token %}
             <input type='hidden' name='hotel_pk' value='{{ hotel.pk }}'>
-            <button type='submit' name='reject' class='reject-button choice float-left'><i class="fas fa-times"></i></button>
+            <button type='submit' name='reject' class='reject-button choice float-left' id='reject'><i class="fas fa-times"></i></button>
         </form>
         <form method='POST' class='skip-form'>
             {% csrf_token %}
